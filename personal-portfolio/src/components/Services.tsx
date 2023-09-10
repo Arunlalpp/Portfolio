@@ -36,7 +36,6 @@ function Services() {
                         </h3>
                         <p className="text-sm text-blue-800 group-hover:text-white group-hover:font-semibold">
                           Lorem ipsum dolor sit amet consectetur adipisicing
-                          elit. Exercitationem rerum tempora iure perferendis,
                         </p>
                       </div>
                     </div>

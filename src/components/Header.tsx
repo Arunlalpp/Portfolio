@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 
 import Aos from "aos";
 
@@ -14,7 +14,7 @@ function Header() {
         <div className="flex items-center justify-between">
           <div className="flex items-center justify-center gap-3">
             <span className="w-9 h-9 bg-green-600 text-white text-lg font-semibold rounded-full flex items-center justify-center border-4 border-violet-700 ">
-              PCP
+              <img src="" alt="" />
             </span>
             <div className="leading-5">
               <h2 className="text-xl text-violet-700 font-bold">Arun lal</h2>

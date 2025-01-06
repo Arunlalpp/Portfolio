@@ -1,5 +1,3 @@
-import React from "react";
-
 import defaultPortfolioData from "../data";
 
 export interface ModalProps {

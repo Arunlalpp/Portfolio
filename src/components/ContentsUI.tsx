@@ -1,5 +1,3 @@
-import React from "react";
-
 import SocialMedia from "./SocialMedia";
 import PersonalGrowthDetails from "./PersonalGrowthDetails";
 

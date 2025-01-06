@@ -1,5 +1,3 @@
-import React from "react";
-
 function SocialMedia() {
   return (
     <div className="flex items-center gap-9 mt-14">

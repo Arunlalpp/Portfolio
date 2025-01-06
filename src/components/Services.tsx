@@ -1,5 +1,3 @@
-import React from "react";
-
 import Frontend from "../assets/front-end.png";
 
 function Services() {

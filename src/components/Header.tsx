@@ -1,45 +1,81 @@
-import { useEffect } from "react";
+"use client";
 
-import Aos from "aos";
+import { useRef, useEffect } from "react";
+import { useMagnetic } from "@/utils/useMagnetic";
+import { gsap } from "@/utils/gsap";
 
-function Header() {
+export default function Header() {
+  const headerRef = useRef<HTMLElement>(null);
+
+  const homeRef = useMagnetic();
+  const portfolioRef = useMagnetic();
+  const aboutRef = useMagnetic();
+  const contactRef = useMagnetic();
+
+  // Hide header on scroll
   useEffect(() => {
-    Aos.init();
+    let lastScroll = 0;
+
+    const handleScroll = () => {
+      const current = window.scrollY;
+
+      if (current > lastScroll && current > 100) {
+        gsap.to(headerRef.current, {
+          y: -120,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      } else {
+        gsap.to(headerRef.current, {
+          y: 0,
+          duration: 0.4,
+          ease: "power2.out",
+        });
+      }
+
+      lastScroll = current;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const headerNavLinks = ["About", "Service", "Portfolio", "Contact"];
   return (
-    <header>
-      <div className="container">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center justify-center gap-3">
-            <span className="w-9 h-9 bg-green-600 text-white text-lg font-semibold rounded-full flex items-center justify-center border-4 border-violet-700 ">
-              <img src="" alt="" />
-            </span>
-            <div className="leading-5">
-              <h2 className="text-xl text-violet-700 font-bold">Arun lal</h2>
-              <p className="text-base font-medium text-white">Personal</p>
-            </div>
-          </div>
-          <div className="menu">
-            <ul className="flex items-center gap-2.5">
-              {headerNavLinks.map((links) => (
-                <li className="text-base font-medium text-violet-700 hover:text-white duration-200 ease-in hover:font-bold">
-                  <a href={`#${links}`}>{links}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="flex item-center gap-4r">
-            <button className="flex items-center gap-2 text-violet-700 font-semibold border border-solid border-violet-700 py-2 px-4 rounded-lg max-h-10 hover:bg-violet-700 hover:text-white hover:font-medium ease-in duration-300">
-              <span className="text-2xl cursor-pointer flex gap-2">
-                <i className="ri-send-plane-line"></i>Let's Talk
-              </span>
-            </button>
-          </div>
-        </div>
+    <header
+      ref={headerRef}
+      className="fixed top-6 left-0 right-0 z-50 flex justify-between items-center px-8 transition-transform"
+    >
+      <div className="flex gap-4">
+        <button
+          ref={homeRef}
+          className="px-6 py-2 rounded-full border border-white/30 backdrop-blur-md text-sm"
+        >
+          Home
+        </button>
+        <button
+          ref={portfolioRef}
+          className="px-6 py-2 rounded-full border border-white/30 backdrop-blur-md text-sm"
+        >
+          Portfolio
+        </button>
+      </div>
+
+      <div className="text-xl font-semibold tracking-wide">GASPAR</div>
+
+      <div className="flex gap-4">
+        <button
+          ref={aboutRef}
+          className="px-6 py-2 rounded-full border border-white/30 backdrop-blur-md text-sm"
+        >
+          About
+        </button>
+        <button
+          ref={contactRef}
+          className="px-6 py-2 rounded-full border border-white/30 backdrop-blur-md text-sm"
+        >
+          Get in touch
+        </button>
       </div>
     </header>
   );
 }
-export default Header;

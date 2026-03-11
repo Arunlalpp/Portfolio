@@ -5,14 +5,13 @@ import { useMagnetic } from "@/utils/useMagnetic";
 import { gsap } from "@/utils/gsap";
 
 export default function Header() {
-  const headerRef = useRef<HTMLElement>(null);
+  const headerRef = useRef<HTMLElement>(null); // ← HTMLButtonElement → HTMLElement
 
-  const homeRef = useMagnetic();
-  const portfolioRef = useMagnetic();
-  const aboutRef = useMagnetic();
-  const contactRef = useMagnetic();
+  const homeRef = useMagnetic<HTMLButtonElement>(); // ← add <HTMLButtonElement>
+  const portfolioRef = useMagnetic<HTMLButtonElement>(); // ← add <HTMLButtonElement>
+  const aboutRef = useMagnetic<HTMLButtonElement>(); // ← add <HTMLButtonElement>
+  const contactRef = useMagnetic<HTMLButtonElement>(); // ← add <HTMLButtonElement>
 
-  // Hide header on scroll
   useEffect(() => {
     let lastScroll = 0;
 

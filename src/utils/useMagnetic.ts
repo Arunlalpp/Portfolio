@@ -3,8 +3,8 @@
 import { useEffect, useRef } from "react"
 import { gsap } from "@/utils/gsap"
 
-export function useMagnetic() {
-    const ref = useRef<HTMLDivElement>(null)
+export function useMagnetic<T extends HTMLElement = HTMLElement>() {
+    const ref = useRef<T>(null)  // ← was HTMLDivElement, now generic T
 
     useEffect(() => {
         const el = ref.current

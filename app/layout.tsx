@@ -1,9 +1,20 @@
 import type { Metadata } from "next";
+import { Poppins } from "next/font/google";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
 import GlobalEffects from "./components/GlobalEffects";
 import MagicCursor from "./components/MagicCursor";
 import PageTransition from "./components/PageTransition";
+import "../public/assets/css/helper.css";
+import "../public/assets/css/theme.css";
+import "../public/assets/css/theme-light.css";
+
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["300", "400", "500", "600", "700", "800", "900"],
+    variable: "--font-poppins",
+    display: "swap",
+});
 
 export const metadata: Metadata = {
     title: "Arun Lal — Software Engineer",
@@ -17,7 +28,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
+        <html lang="en" className={poppins.variable} suppressHydrationWarning>
             <head>
                 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
                 <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -25,19 +36,11 @@ export default function RootLayout({
                 <link rel="preconnect" href="https://fonts.googleapis.com/" />
                 <link rel="preconnect" href="https://fonts.gstatic.com/" crossOrigin="" />
                 <link
-                    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-                    rel="stylesheet"
-                />
-                <link
                     href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&display=swap"
                     rel="stylesheet"
                 />
 
                 <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css" />
-
-                <link rel="stylesheet" href="/assets/css/helper.css" />
-                <link rel="stylesheet" href="/assets/css/theme.css" />
-                <link rel="stylesheet" href="/assets/css/theme-light.css" />
             </head>
 
             <body id="body" className="tt-transition tt-noise tt-magic-cursor tt-smooth-scroll tt-header-scroll-on page-header-on ph-full-on ph-full-m-on ph-center-on ph-video-on ph-mask-on tt-ph-visible" suppressHydrationWarning>

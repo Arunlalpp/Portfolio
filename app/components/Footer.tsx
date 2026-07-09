@@ -1,6 +1,11 @@
+"use client";
+
 import { navLinks, footerSocialLinks } from "../data/content";
+import { useScrollToAnchor } from "../hooks/useScrollToAnchor";
 
 export default function Footer() {
+    const scrollToAnchor = useScrollToAnchor();
+
     return (
         <footer id="tt-footer" className="border-top">
             <div className="tt-footer-inner tt-wrap">
@@ -11,7 +16,7 @@ export default function Footer() {
                             <ul className="tt-footer-widget-list">
                                 {navLinks.slice(1).map((link) => (
                                     <li key={link.href}>
-                                        <a href={link.href} className="tt-link">{link.label}</a>
+                                        <a href={link.href} className="tt-link" onClick={scrollToAnchor}>{link.label}</a>
                                     </li>
                                 ))}
                             </ul>
@@ -50,7 +55,7 @@ export default function Footer() {
                                 </li>
                                 <li>
                                     <div className="tt-footer-copyright">
-                                        © <span className="tt-copyright-year" /> Arun Lal.<br />
+                                        © {new Date().getFullYear()} Arun Lal.<br />
                                         All Rights Reserved.
                                     </div>
                                 </li>

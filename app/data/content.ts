@@ -46,13 +46,13 @@ export const projects: Project[] = [
         title: "Order Platform",
         categories: ["Backend", "Fintech"],
         info: "Node.js / PostgreSQL / AWS",
-        media: { type: "image", src: "/assets/img/portfolio/800/portfolio-1.jpg" },
+        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-1.jpg" },
     },
     {
         title: "Realtime Dashboard",
         categories: ["Frontend"],
         info: "React / TypeScript / WebSockets",
-        media: { type: "image", src: "/assets/img/portfolio/800/portfolio-2.jpg" },
+        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-2.jpg" },
     },
     {
         title: "Storefront Redesign",
@@ -69,13 +69,13 @@ export const projects: Project[] = [
         title: "Internal Tooling",
         categories: ["DevOps"],
         info: "Docker / CI-CD / Terraform",
-        media: { type: "image", src: "/assets/img/portfolio/800/portfolio-3.jpg" },
+        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-3.jpg" },
     },
     {
         title: "Mobile Companion App",
         categories: ["Mobile"],
         info: "React Native / GraphQL",
-        media: { type: "image", src: "/assets/img/portfolio/800/portfolio-4.jpg" },
+        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-4.jpg" },
     },
 ];
 

@@ -1,6 +1,50 @@
+"use client";
+
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "../lib/gsap";
+import TextReveal from "./TextReveal";
+import ProjectListItem from "./ProjectListItem";
+import { useFadeInUp } from "../hooks/useFadeInUp";
 import { projects } from "../data/content";
 
+const PREVIEW_FOLLOW_BREAKPOINT = 768;
+
 export default function Projects() {
+    const githubBtnRef = useFadeInUp<HTMLDivElement>();
+    const previewListRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        const previews = previewListRef.current?.querySelectorAll<HTMLElement>(".tt-ppli-preview");
+        if (!previews?.length) return;
+
+        const xTo = gsap.quickTo(previews, "x", { duration: 1, ease: "power3.out" });
+        const yTo = gsap.quickTo(previews, "y", { duration: 1, ease: "power3.out" });
+
+        function onMouseMove(event: MouseEvent) {
+            xTo(event.clientX);
+            yTo(event.clientY);
+        }
+
+        function updateFollowState() {
+            if (window.innerWidth >= PREVIEW_FOLLOW_BREAKPOINT) {
+                gsap.set(previews!, { xPercent: -50, yPercent: -50 });
+                window.addEventListener("mousemove", onMouseMove);
+            } else {
+                window.removeEventListener("mousemove", onMouseMove);
+                gsap.set(previews!, { clearProps: "all" });
+            }
+        }
+
+        updateFollowState();
+        window.addEventListener("resize", updateFollowState);
+
+        return () => {
+            window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("resize", updateFollowState);
+        };
+    }, []);
+
     return (
         <>
             <div id="projects" className="tt-section padding-top-xlg-140 border-top">
@@ -8,16 +52,16 @@ export default function Projects() {
                     <div className="tt-row">
                         <div className="tt-col-xl-8">
                             <div className="tt-heading tt-heading-xxxlg">
-                                <h3 className="tt-heading-subtitle tt-text-reveal">Featured Work</h3>
-                                <h2 className="tt-heading-title tt-text-reveal">Projects</h2>
+                                <TextReveal as="h3" className="tt-heading-subtitle">Featured Work</TextReveal>
+                                <TextReveal as="h2" className="tt-heading-title">Projects</TextReveal>
                             </div>
-                            <div className="tt-text-uppercase max-width-400 margin-left-xlg-10-p text-pretty tt-text-reveal">
+                            <TextReveal className="tt-text-uppercase max-width-400 margin-left-xlg-10-p text-pretty">
                                 Please explore my selected projects below.
-                            </div>
+                            </TextReveal>
                         </div>
 
                         <div className="tt-col-xl-4 tt-align-self-end margin-top-30">
-                            <div className="tt-big-round-ptn tt-anim-fadeinup">
+                            <div ref={githubBtnRef} className="tt-big-round-ptn tt-anim-fadeinup">
                                 <a href="https://github.com/" target="_blank" rel="noopener" className="tt-big-round-ptn-holder tt-magnetic-item">
                                     <div className="tt-big-round-ptn-inner">View<br /> GitHub</div>
                                 </a>
@@ -29,43 +73,10 @@ export default function Projects() {
 
             <div className="tt-section no-padding-top padding-top-xlg-80 padding-bottom-20 padding-bottom-xlg-80">
                 <div className="tt-section-inner">
-                    <div className="tt-portfolio-preview-list tt-ppli-portrait tt-ppli-hover">
+                    <div ref={previewListRef} className="tt-portfolio-preview-list tt-ppli-portrait tt-ppli-hover">
                         <div className="tt-ppl-items-list">
                             {projects.map((project) => (
-                                <a href="#" key={project.title} className="tt-ppl-item">
-                                    <div className="tt-ppli-preview">
-                                        {project.media.type === "image" ? (
-                                            <div className="tt-ppli-preview-image">
-                                                <img src={project.media.src} alt={project.title} />
-                                            </div>
-                                        ) : (
-                                            <div className="tt-ppli-preview-video">
-                                                <video loop muted preload="metadata" poster={project.media.poster}>
-                                                    <source src="/assets/vids/placeholder.mp4" data-src={project.media.mp4} type="video/mp4" />
-                                                    <source src="/assets/vids/placeholder.webm" data-src={project.media.webm} type="video/webm" />
-                                                </video>
-                                            </div>
-                                        )}
-                                    </div>
-                                    <div className="tt-ppl-item-inner">
-                                        <div className="tt-ppl-item-holder">
-                                            <div className="tt-ppli-col tt-ppli-col-count"><div className="tt-ppli-count" /></div>
-                                            <div className="tt-ppli-col tt-ppli-col-caption">
-                                                <div className="tt-ppli-caption">
-                                                    <h2 className="tt-ppli-title">{project.title}</h2>
-                                                    <div className="tt-ppli-categories">
-                                                        {project.categories.map((category) => (
-                                                            <div className="tt-ppli-category" key={category}>{category}</div>
-                                                        ))}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div className="tt-ppli-col tt-ppli-col-info tt-justify-content-md-end">
-                                                <div className="tt-ppli-info">{project.info}</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
+                                <ProjectListItem project={project} key={project.title} />
                             ))}
                         </div>
                     </div>

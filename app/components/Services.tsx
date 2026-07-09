@@ -1,7 +1,44 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import ArrowIcon from "./ArrowIcon";
+import TextReveal from "./TextReveal";
+import { useFadeInUp } from "../hooks/useFadeInUp";
+import { useScrollToAnchor } from "../hooks/useScrollToAnchor";
 import { services } from "../data/content";
 
 export default function Services() {
+    const arrowRef = useFadeInUp<HTMLDivElement>();
+    const accordionFadeRef = useFadeInUp<HTMLDivElement>();
+    const accordionRef = useRef<HTMLDivElement>(null);
+    const scrollToAnchor = useScrollToAnchor();
+    const [activeIndex, setActiveIndex] = useState<number | null>(null);
+
+    function setAccordionRefs(node: HTMLDivElement | null) {
+        accordionFadeRef.current = node;
+        accordionRef.current = node;
+    }
+
+    useEffect(() => {
+        const container = accordionRef.current;
+        const firstItemInner = container?.querySelector(".tt-hac-item:first-child .tt-hac-item-inner");
+        if (!container || !firstItemInner) return;
+
+        function updateTextWidth() {
+            const width = firstItemInner!.getBoundingClientRect().width * 0.84;
+            container!.querySelectorAll<HTMLElement>(".tt-haci-title, .tt-haci-description").forEach((el) => {
+                el.style.width = `${width}px`;
+            });
+        }
+
+        updateTextWidth();
+        const observer = new ResizeObserver(updateTextWidth);
+        observer.observe(firstItemInner);
+        return () => observer.disconnect();
+    }, []);
+
+    const itemWidth = `${100 / services.length}%`;
+
     return (
         <>
             <div id="services" className="tt-section no-padding-bottom padding-bottom-xlg-80">
@@ -9,16 +46,16 @@ export default function Services() {
                     <div className="tt-row">
                         <div className="tt-col-xl-8">
                             <div className="tt-heading tt-heading-xxxlg">
-                                <h3 className="tt-heading-subtitle tt-text-reveal">What I Do</h3>
-                                <h2 className="tt-heading-title tt-text-reveal">Services</h2>
+                                <TextReveal as="h3" className="tt-heading-subtitle">What I Do</TextReveal>
+                                <TextReveal as="h2" className="tt-heading-title">Services</TextReveal>
                             </div>
-                            <div className="tt-text-uppercase max-width-400 margin-left-xlg-10-p text-pretty tt-text-reveal">
+                            <TextReveal className="tt-text-uppercase max-width-400 margin-left-xlg-10-p text-pretty">
                                 Comprehensive engineering services to help ship reliable products.
-                            </div>
+                            </TextReveal>
                         </div>
 
                         <div className="tt-col-xl-4 tt-align-self-end margin-top-40">
-                            <div className="tt-big-arrow tt-ba-angle-bottom-left tt-anim-fadeinup">
+                            <div ref={arrowRef} className="tt-big-arrow tt-ba-angle-bottom-left tt-anim-fadeinup">
                                 <ArrowIcon />
                             </div>
                         </div>
@@ -28,9 +65,19 @@ export default function Services() {
 
             <div className="tt-section">
                 <div className="tt-section-inner">
-                    <div className="tt-horizontal-accordion tt-hac-alter-hover tt-anim-fadeinup">
-                        {services.map((service) => (
-                            <div className="tt-hac-item cursor-alter" key={service.titleLines.join(" ")}>
+                    <div ref={setAccordionRefs} className="tt-horizontal-accordion tt-hac-alter-hover tt-anim-fadeinup">
+                        {services.map((service, index) => (
+                            <div
+                                className={
+                                    "tt-hac-item cursor-alter" +
+                                    (index === 0 && activeIndex !== null ? " inactive" : "") +
+                                    (index !== 0 && activeIndex === index ? " active" : "")
+                                }
+                                style={{ width: itemWidth, zIndex: services.length - index }}
+                                onMouseEnter={index !== 0 ? () => setActiveIndex(index) : undefined}
+                                onMouseLeave={index !== 0 ? () => setActiveIndex(null) : undefined}
+                                key={service.titleLines.join(" ")}
+                            >
                                 <div className="tt-hac-item-count" />
                                 <div className="tt-hac-item-inner">
                                     <div className="tt-hac-item-content">
@@ -41,8 +88,8 @@ export default function Services() {
                                             <div className="tt-haci-description">{service.description}</div>
                                         </div>
                                         <div className="tt-haci-content-bottom">
-                                            <a href="#contact" className="tt-btn tt-btn-outline tt-magnetic-item">
-                                                <span data-hover="Get In Touch">Get In Touch</span>
+                                            <a href="#contact" className="tt-btn tt-btn-outline tt-magnetic-item" onClick={scrollToAnchor}>
+                                                <span className="tt-btn-inner"><span data-hover="Get In Touch">Get In Touch</span></span>
                                             </a>
                                         </div>
                                     </div>

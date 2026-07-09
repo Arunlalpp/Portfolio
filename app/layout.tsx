@@ -1,44 +1,15 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+import SmoothScrollProvider from "./components/SmoothScrollProvider";
+import { ThemeProvider } from "./components/ThemeProvider";
+import GlobalEffects from "./components/GlobalEffects";
+import MagicCursor from "./components/MagicCursor";
+import PageTransition from "./components/PageTransition";
 
 export const metadata: Metadata = {
     title: "Arun Lal — Software Engineer",
     description:
         "Portfolio of Arun Lal, a software engineer building thoughtful, reliable digital products.",
 };
-
-const vendorScripts = [
-    "/assets/vendor/jquery/jquery.min.js",
-    "/assets/vendor/gsap/gsap.min.js",
-    "/assets/vendor/gsap/ScrollToPlugin.min.js",
-    "/assets/vendor/gsap/ScrollTrigger.min.js",
-    "/assets/vendor/lenis.min.js",
-    "/assets/vendor/isotope/imagesloaded.pkgd.min.js",
-    "/assets/vendor/isotope/isotope.pkgd.min.js",
-    "/assets/vendor/isotope/packery-mode.pkgd.min.js",
-    "/assets/vendor/fancybox/js/fancybox.umd.js",
-    "/assets/vendor/swiper/js/swiper-bundle.min.js",
-    "/assets/js/theme.js",
-];
-
-const vendorScriptLoader = `
-(function () {
-    var sources = ${JSON.stringify(vendorScripts)};
-    function loadInOrder() {
-        sources.forEach(function (src) {
-            var el = document.createElement("script");
-            el.src = src;
-            el.async = false;
-            document.body.appendChild(el);
-        });
-    }
-    if (document.readyState === "complete") {
-        loadInOrder();
-    } else {
-        window.addEventListener("load", loadInOrder);
-    }
-})();
-`;
 
 export default function RootLayout({
     children,
@@ -63,15 +34,13 @@ export default function RootLayout({
                 />
 
                 <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css" />
-                <link rel="stylesheet" href="/assets/vendor/fancybox/css/fancybox.css" />
-                <link rel="stylesheet" href="/assets/vendor/swiper/css/swiper-bundle.min.css" />
 
                 <link rel="stylesheet" href="/assets/css/helper.css" />
                 <link rel="stylesheet" href="/assets/css/theme.css" />
                 <link rel="stylesheet" href="/assets/css/theme-light.css" />
             </head>
 
-            <body id="body" className="tt-transition tt-noise tt-magic-cursor tt-smooth-scroll" suppressHydrationWarning>
+            <body id="body" className="tt-transition tt-noise tt-magic-cursor tt-smooth-scroll tt-header-scroll-on page-header-on ph-full-on ph-full-m-on ph-center-on ph-video-on ph-mask-on tt-ph-visible" suppressHydrationWarning>
                 <main id="body-inner">
                     <div id="tt-page-transition">
                         <div className="tt-ptr-overlay-top tt-noise" />
@@ -85,14 +54,13 @@ export default function RootLayout({
                         <div id="ball" />
                     </div>
 
-                    {children}
+                    <GlobalEffects />
+                    <MagicCursor />
+                    <PageTransition />
+                    <ThemeProvider>
+                        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+                    </ThemeProvider>
                 </main>
-
-                <Script
-                    id="vendor-scripts"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{ __html: vendorScriptLoader }}
-                />
             </body>
         </html>
     );

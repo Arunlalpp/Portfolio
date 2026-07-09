@@ -1007,6 +1007,11 @@ h6.tt-text-uppercase {
 ================================================== */
 .tt-sbg-on:not(.tt-sbg-is-light-on) {
 	background-color: #222;
+	background-image:
+		radial-gradient(circle at 15% 20%, rgb(191 74 26 / 10%), transparent 60%),
+		url(../img/bg-noise.png);
+	background-repeat: no-repeat, repeat;
+	background-size: cover, 180px 180px;
 	color: #FFF;
 }
 

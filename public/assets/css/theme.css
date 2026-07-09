@@ -86,7 +86,7 @@
 	--tt-linear-text-bg-color: rgb(255 255 255 / 20%); /* For linear text reveal effect (do not change it!). rgb(255 255 255 / 20%) */
 
 	/* Fonts */
-	--tt-body-font: 'Poppins', sans-serif; /* Body font. */
+	--tt-body-font: var(--font-poppins), 'Poppins', sans-serif; /* Body font. */
 	--tt-alter-font: "Big Shoulders Display", sans-serif; /* Secondary/Alter font. */
 
 	/* Page transition */

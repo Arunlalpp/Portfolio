@@ -1,0 +1,105 @@
+/* ------------------------------------------------------------- *
+ * Sticky testimonials 
+/* ------------------------------------------------------------- */
+
+.tt-sticky-testimonials {
+	position: relative;
+	counter-reset: tt-testimonials-counter;
+}
+
+
+/* Sticky testimonials item 
+============================ */
+.tt-stte-item {
+	position: relative;
+	width: 100%;
+	margin-bottom: 30px;
+	will-change: scale;
+}
+
+/* Card */
+.tt-stte-card {
+	position: relative;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background-color: var(--tt-bg-color);
+	padding: 7% 8%;
+	z-index: 1;
+	border-radius: 15px;
+	border: 1px solid var(--tt-border-color);
+}
+@media (max-width: 768px) {
+	.tt-stte-card {
+		padding: 60px 20px 40px 20px;
+	}
+}
+
+/* Card counter */
+.tt-stte-card-counter {
+	position: absolute;
+	top: 20px;
+	left: 20px;
+}
+.tt-stte-card-counter::before {
+	display: block;
+	counter-increment: tt-testimonials-counter;
+	content: counter(tt-testimonials-counter, decimal-leading-zero);
+	font-family: var(--tt-alter-font);
+	font-size: clamp(28px, 2vw, 34px);
+	font-weight: normal;
+	line-height: 1;
+	opacity: .3;
+	z-index: -1;
+}
+@media (max-width: 768px) {
+	.tt-stte-card-counter::before {
+		font-size: 24px;
+	}
+}
+
+/* Caption */
+.tt-stte-card-caption {
+	position: relative;
+	max-width: 700px;
+}
+.tt-stte-text {
+	font-size: clamp(19px, 2vw, 24px);
+	font-style: italic;
+	text-wrap: pretty;
+}
+.tt-stte-subtext {
+	margin-top: 20px;
+	font-size: 17px;
+	opacity: .5;
+}
+.tt-stte-subtext a {
+	color: currentColor;
+}
+
+
+/* Card content alignment 
+========================== */
+.tt-sticky-testimonials.tt-stte-center .tt-stte-card-caption {
+	text-align: center;
+	padding: 0;
+}
+.tt-sticky-testimonials.tt-stte-center .tt-stte-card-counter {
+	position: relative;
+	top: auto;
+	left: auto;
+	margin-bottom: 30px;
+}
+
+
+/* Card reversed colors style 
+============================== */
+.tt-sticky-testimonials.tt-stte-reversed-colors .tt-stte-card {
+	background-color: var(--tt-light-color);
+	color: var(--tt-dark-color);
+	border: none;
+}
+
+

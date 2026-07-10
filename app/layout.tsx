@@ -5,9 +5,10 @@ import { ThemeProvider } from "./components/ThemeProvider";
 import GlobalEffects from "./components/GlobalEffects";
 import MagicCursor from "./components/MagicCursor";
 import PageTransition from "./components/PageTransition";
-import "../public/assets/css/helper.css";
-import "../public/assets/css/theme.css";
-import "../public/assets/css/theme-light.css";
+import "./styles/globals.scss";
+import "./styles/_legacy-helper.scss";
+import "./styles/_legacy-theme.scss";
+import "./styles/_legacy-theme-light.scss";
 
 const poppins = Poppins({
     subsets: ["latin"],
@@ -43,7 +44,13 @@ export default function RootLayout({
                 <link rel="stylesheet" href="/assets/vendor/fontawesome/css/all.min.css" />
             </head>
 
-            <body id="body" className="tt-transition tt-noise tt-magic-cursor tt-smooth-scroll tt-header-scroll-on page-header-on ph-full-on ph-full-m-on ph-center-on ph-video-on ph-mask-on tt-ph-visible" suppressHydrationWarning>
+            <body
+                id="body"
+                className="tt-transition tt-noise tt-magic-cursor tt-smooth-scroll tt-header-scroll-on page-header-on ph-full-on ph-full-m-on ph-center-on ph-video-on ph-mask-on"
+                data-theme="dark"
+                data-ph-visible=""
+                suppressHydrationWarning
+            >
                 <main id="body-inner">
                     <div id="tt-page-transition">
                         <div className="tt-ptr-overlay-top tt-noise" />

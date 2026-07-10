@@ -1,120 +1,3 @@
-/* --------------------------------------------------------------------
-* Master Stylesheet
-* 
-* Template:		Jesper - Creative Portfolio Showcase HTML Website Template
-* Author:		Themetorium
-* URL:			https://themetorium.net/
-*
--------------------------------------------------------------------- */
-
-
-/* Table of Content
-====================
-* Global variables 
-* General 
-* Page transitions
-* Lenis
-* Custom scrollbar style
-* Magic cursor
-* Background noise
-* Headings
-* tt-Headings (custom headings)
-* Page boxed layout
-* Body inner
-* Content wrap
-* Page content
-* tt-Section
-* 404 error
-* Header
-* Main menu
-* Page header
-* Table
-* Blockquote
-* Figure
-* Forms
-* Contact form
-* Contact info
-* Split box
-* Fancybox (lightbox plugin)
-* tt-Image
-* tt-video
-* tt-Embed
-* Buttons
-* Social buttons
-* Big arrow
-* tt-Clipper
-* Text linear reveal
-* Logo wall
-* Scrolling text
-* Accordion
-* Horizontal accordion
-* Moving images
-* tt-Grid
-* Portfolio grid
-* Portfolio preview list
-* Portfolio compact list
-* Portfolio sticky
-* Portfolio slider
-* tt-Gallery
-* Content slider 
-* Content carousel 
-* Sticky horizontal scroll
-* Project info list
-* Next project nav
-* Avards list
-* tt-Pagination
-* Footer
-* Scroll to top button
-*/ 
-
-
-/* ------------------------------------------------------------- *
- * Global variables
-/* ------------------------------------------------------------- */
-
-:root {
-	/* General */
-	--tt-main-color: #bf4a1a; /* Template main color. #bf4a1a */
-	--tt-dark-color: #121212; /* Template dark color. #121212 */
-	--tt-light-color: #efedea; /* Template light color. #efedea */
-
-	--tt-bg-color: #0a0a0a; /* Template background color. #0a0a0a */
-	--tt-text-color: #efedea; /* Template text color. #efedea */
-	--tt-text-muted-color: #8f8f8f; /* Template text muted color. #8f8f8f */
-	--tt-border-color: rgb(133 133 133 / 50%); /* Template borders color. rgb(133 133 133 / 50%) */
-
-	--tt-linear-text-bg-color: rgb(255 255 255 / 20%); /* For linear text reveal effect (do not change it!). rgb(255 255 255 / 20%) */
-
-	/* Fonts */
-	--tt-body-font: var(--font-poppins), 'Poppins', sans-serif; /* Body font. */
-	--tt-alter-font: "Big Shoulders Display", sans-serif; /* Secondary/Alter font. */
-
-	/* Page transition */
-	--tt-page-trans-overlay-bg-color: #161616; /* Page transition overlay background color. #161616 */
-
-	/* Cursor ball */
-	--tt-ball-border-color: #666; /* Ball border color. #666 */
-	--tt-ball-magnetic-color: var(--tt-main-color); /* Ball magnetic border color. */
-	--tt-ball-bg-color: color-mix(in oklab, var(--tt-main-color) 93%, transparent); /* Ball view background color. */
-	--tt-ball-color: #FFF; /* Ball view text color. #FFF */
-
-	/* Links */
-	--tt-link-color: #c93b00; /* Link color. #c93b00 */
-	--tt-link-hover-color: #f5533a; /* Link hover color. #f5533a */
-
-	/* Main menu */
-	--tt-sub-menu-bg-color: #252525; /* Sub menu background color. #252525 */
-	--tt-sub-menu-link-color: #bbb9b2; /* Sub menu link color. #bbb9b2 */
-	--tt-sub-menu-link-hover-color: #FFF; /* Sub menu link hover color. #FFF */
-
-	/* Force to light color */
-	--tt-force-to-light-color: #f3f3f3; /* If the element has a background image/video (page header, fullscreen slider, etc.), make all inner elements light (for better visibility). #f3f3f3 */
-}
-
-
-/* ------------------------------------------------------------- *
- * General
-/* ------------------------------------------------------------- */
 
 * { box-sizing: border-box; }
 
@@ -273,7 +156,7 @@ hr {
 }
 
 /* Disable scroll */
-.tt-no-scroll {
+[data-scroll-lock] {
 	overflow-y: hidden !important;
 }
 
@@ -290,66 +173,7 @@ hr {
 }
 
 
-/* ------------------------------------------------------------- *
- * Page transitions
-/* ------------------------------------------------------------- */
-
-#tt-page-transition {
-	display: none;
-}
-body.tt-transition #tt-page-transition {
-	position: relative;
-	display: block;
-	z-index: 99999;
-}
-
-/* Transition overlay */
-body.tt-transition .tt-ptr-overlay-top {
-	position: fixed;
-	display: block;
-	top: 0;
-	left: 0;
-	width: 50%;
-	height: 100vh;
-	height: 100svh;
-	background-color: var(--tt-page-trans-overlay-bg-color);
-	z-index: 1;
-}
-body.tt-transition .tt-ptr-overlay-bottom {
-	position: fixed;
-	display: block;
-	top: 0;
-	right: 0;
-	width: 50%;
-	height: 100vh;
-	height: 100svh;
-	background-color: var(--tt-page-trans-overlay-bg-color);
-	z-index: 1;
-}
-
-/* Transition preloader */
-body.tt-transition .tt-ptr-preloader {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	z-index: 2;
-	transform: translate(-50%, -50%);
-}
-
-body.tt-transition .tt-ptr-prel-content {
-	margin-top: 10px;
-	text-align: center;
-	font-size: 28px;
-	font-weight: bold;
-	font-weight: 600;
-	color: #444;
-}
-
-.tt-ptr-prel-image {
-	max-height: 72px; /* You may need to change the img height to match your logo type! */
-	opacity: .7; /* You may need to change the opacity as well! */
-}
-
+/* Transitions — moved to app/styles/_transitions.scss */
 
 /* ------------------------------------------------------------- *
  * Lenis - smooth scroll plugin
@@ -378,7 +202,7 @@ html.lenis body {
 }
 
 /* Remove scrollbar */
-/*body:not(.is-mobile).tt-smooth-scroll {
+/*body:not([data-touch]).tt-smooth-scroll {
 	overflow: hidden; 
 }*/
 
@@ -439,249 +263,9 @@ textarea::-webkit-scrollbar-thumb:hover {
 }
 
 
-/* ------------------------------------------------------------- *
- * Magic cursor
-/* ------------------------------------------------------------- */
+/* Cursor — moved to app/styles/_cursor.scss */
 
-#magic-cursor {
-	position: fixed;
-	display: none;
-	top: 0;
-	left: 0;
-	width: 10px;
-	height: 10px;
-	pointer-events: none;
-	z-index: 99999;
-	opacity: 0;
-}
-body.tt-magic-cursor #magic-cursor {
-	display: block;
-}
-
-#ball {
-	position: fixed;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	pointer-events: none;
-	border-style: solid;
-	border-radius: 50%;
-	border-color: var(--tt-ball-border-color);
-	/* Note: border width handled through JS */
-}
-
-
-/* Ball view 
-============= */
-#ball.ball-view {
-	background-color: var(--tt-ball-bg-color);
-	text-align: center;
-	text-transform: uppercase;
-	font-family: var(--tt-alter-font);
-	font-size: 21px;
-	font-weight: 600;
-	color: var(--tt-ball-color);
-	line-height: 1;
-	letter-spacing: 1px;
-	border-color: var(--tt-ball-bg-color);
-}
-#ball .ball-view-inner {
-	padding: 0 5px;
-	opacity: 0;
-	visibility: hidden;
-	transform: scale(0);
-}
-#ball .ball-view-inner i {
-	font-size: 19px;
-}
-
-
-/* Ball drag 
-============= */
-#ball.ball-drag {
-	background-color: var(--tt-ball-bg-color);
-	border-color: var(--tt-ball-bg-color);
-}
-#ball .ball-drag-inner {
-	position: absolute;
-	display: block;
-	inset: 0;
-	font-size: 19px;
-	color: var(--tt-ball-color);
-	line-height: 1;
-}
-#ball .ball-drag-inner::before,
-#ball .ball-drag-inner::after {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-
-	/* Font Awesome */
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-	display: inline-block;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-}
-#ball .ball-drag-inner::before {
-	content: "\f060"; /* Font Awesome */
-	left: 20%;
-}
-#ball .ball-drag-inner::after {
-	content: "\f061"; /* Font Awesome */
-	right: 20%;
-}
-
-
-/* Ball drag mouse down (for Swiper sliders)
-======================== */
-#ball.ball-drag-mouse-down {
-	background-color: transparent;
-	border-color: #FFF;
-}
-#ball .ball-drag-mouse-down-inner {
-	position: absolute;
-	display: block;
-	inset: 0;
-	color: #FFF;
-}
-#ball .ball-drag-mouse-down-inner::before,
-#ball .ball-drag-mouse-down-inner::after {
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-
-	/* Font Awesome */
-	font-family: "Font Awesome 5 Free";
-	font-weight: 900;
-	display: inline-block;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-}
-#ball .ball-drag-mouse-down-inner::before {
-	content: "\f060"; /* Font Awesome */
-	left: -30px;
-}
-#ball .ball-drag-mouse-down-inner::after {
-	content: "\f061"; /* Font Awesome */
-	right: -30px;
-}
-
-
-/* Ball arrow 
-============== */
-#ball.ball-arrow {
-	background-color: var(--tt-ball-bg-color);
-	border-color: var(--tt-ball-bg-color);
-}
-#ball .ball-arrow-left,
-#ball .ball-arrow-right {
-	font-size: 21px;
-	color: var(--tt-ball-color);
-	line-height: 1;
-}
-#ball .ball-arrow-left::before,
-#ball .ball-arrow-right::before {
-
-	/* Font Awesome */
-	font-family: "Font Awesome 5 Free";
-	content: "\f061";
-	font-weight: 900;
-	display: inline-block;
-	font-style: normal;
-	font-variant: normal;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-}
-#ball .ball-arrow-left::before {
-	content: "\f060";
-}
-#ball .ball-arrow-right::before {
-	content: "\f061";
-}
-
-
-/* Ball close 
-============== */
-#ball.ball-close {
-	opacity: 1 !important;
-	border-color: var(--tt-light-color);
-}
-#ball .ball-close-inner {
-	position: absolute;
-	padding: 0 5px;
-	text-align: center;
-	text-transform: uppercase;
-	font-family: var(--tt-alter-font);
-	font-size: 21px;
-	font-weight: 600;
-	color: var(--tt-light-color);
-	line-height: 1;
-	letter-spacing: 1px;
-}
-
-
-/* Magnetic cursor
-=================== */
-.magnetic-wrap {
-	position: relative;
-	display: inline-block;
-}
-#ball.magnetic-active {
-	border-color: var(--tt-ball-magnetic-color);
-}
-
-
-/* --------------------------------------------------------------- *
- * Background noise (effect only if <body> has class "tt-noise"!)
-/* --------------------------------------------------------------- */
-
-.tt-bg-noise {
-	display: none;
-}
-body.tt-noise .tt-bg-noise {
-	position: absolute;
-	display: block;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	z-index: -1;
-	pointer-events: none;
-	overflow: hidden;
-}
-body.tt-noise .tt-bg-noise:before { 
-	position: absolute;
-	content: '';
-	top: -10rem;
-	left: -10rem;
-	width: calc(100% + 20rem);
-	height: calc(100% + 20rem);
-	z-index: 0;
-	pointer-events: none;
-	background-image: url(../img/bg-noise.png);
-	background-position: 50%;
-	animation: BgNoise 1s steps(2) infinite;
-}
-@keyframes BgNoise {
-	0% { transform: translate3d(0, 9rem, 0) }
-	10% { transform: translate3d(-1rem, -4rem, 0) }
-	20% { transform: translate3d(-8rem, 2rem, 0) }
-	30% { transform: translate3d(9rem, -9rem, 0) }
-	40% { transform: translate3d(-2rem, 7rem, 0) }
-	50% { transform: translate3d(-9rem, -4rem, 0) }
-	60% { transform: translate3d(2rem, 6rem, 0) }
-	70% { transform: translate3d(7rem, -8rem, 0) }
-	80% { transform: translate3d(-9rem, 1rem, 0) }
-	90% { transform: translate3d(6rem, -5rem, 0) }
-	to { transform: translate3d(-7rem, 0, 0) }
-}
-
-
+/* Noise — moved to app/styles/_noise.scss */
 
 /* ------------------------------------------------------------- *
  * Headings
@@ -721,430 +305,9 @@ h6.tt-text-uppercase {
 }
 
 
-/* ------------------------------------------------------------- *
- * tt-Headings (custom headings)
-/* ------------------------------------------------------------- */
+/* Typography — moved to app/styles/_typography.scss */
 
-.tt-heading {
-	position: relative;
-	padding-left: 15px;
-	padding-right: 15px;
-	margin-bottom: 40px;
-	z-index: 9;
-}
-@media (max-width: 991px) {
-	.tt-heading {
-		margin-bottom: 30px;
-	}
-}
-.tt-wrap .tt-heading {
-	padding-left: 0;
-	padding-right: 0;
-}
-
-/* tt-Headings title */
-.tt-heading-title {
-	margin: 0;
-	text-transform: uppercase;
-	font-family: var(--tt-alter-font);
-	font-size: clamp(32px, 3vw, 42px);
-	font-weight: bold;
-	font-weight: 600;
-	line-height: 1;
-}
-
-/* tt-Headings subtitle */
-.tt-heading-subtitle {
-	margin: 0 0 30px 0;
-	text-transform: uppercase;
-	font-size: calc(15px + 0.1vw);
-	font-weight: bold;
-	font-weight: 600;
-	letter-spacing: 1px;
-	line-height: 1.2;
-}
-.tt-heading-title + .tt-heading-subtitle {
-	margin: 15px 0 0 0 !important;
-}
-
-/* tt-Headings paragraph */
-.tt-heading-title + p,
-.tt-heading-subtitle + p {
-	margin-top: 30px;
-}
-.tt-heading > p:last-child {
-	margin-bottom: 0 !important;
-}
-
-
-/* tt-Headings positions center 
-================================ */
-.tt-heading.tt-heading-center {
-	display: flex;
-	text-align: center;
-	flex-direction: column;
-	align-items: center;
-	text-align: center;
-}
-
-
-/* tt-Headings sizes 
-===================== */
-/* size xsm */
-.tt-heading.tt-heading-xsm .tt-heading-title {
-	font-size: clamp(24px, 2vw, 26px);
-}
-.tt-heading.tt-heading-xsm .tt-heading-subtitle {
-	font-size: calc(12px + 0.1vw);
-}
-
-/* size sm */
-.tt-heading.tt-heading-sm .tt-heading-title {
-	font-size: clamp(26px, 2vw, 34px);
-}
-.tt-heading.tt-heading-sm .tt-heading-subtitle {
-	font-size: calc(14px + 0.1vw);
-}
-
-/* size lg */
-.tt-heading.tt-heading-lg .tt-heading-title {
-	font-size: clamp(36px, 4vw, 62px);
-}
-.tt-heading.tt-heading-lg .tt-heading-subtitle {
-	margin-bottom: 40px;
-}
-
-/* size xlg */
-.tt-heading.tt-heading-xlg .tt-heading-title {
-	font-size: clamp(52px, 5vw, 82px);
-}
-@media (min-width: 992px) {
-	.tt-heading.tt-heading-xlg .tt-heading-subtitle {
-		margin-bottom: 50px;
-	}
-	.tt-heading.tt-heading-xlg .tt-heading-title + p,
-	.tt-heading.tt-heading-xlg .tt-heading-subtitle + p {
-		margin-top: 30px;
-	}
-}
-
-/* size xxlg */
-.tt-heading.tt-heading-xxlg .tt-heading-title {
-	font-size: clamp(52px, 6vw, 110px);
-}
-@media (min-width: 992px) {
-	.tt-heading.tt-heading-xxlg .tt-heading-subtitle {
-		margin-bottom: 50px;
-	}
-	.tt-heading.tt-heading-xxlg .tt-heading-title + p,
-	.tt-heading.tt-heading-xxlg .tt-heading-subtitle + p {
-		margin-top: 30px;
-	}
-}
-
-/* size xxxlg */
-.tt-heading.tt-heading-xxxlg .tt-heading-title {
-	font-size: clamp(64px, 10vw, 187px);
-}
-@media (min-width: 992px) {
-	.tt-heading.tt-heading-xxxlg .tt-heading-subtitle {
-		margin-bottom: 50px;
-	}
-	.tt-heading.tt-heading-xxxlg .tt-heading-title + p,
-	.tt-heading.tt-heading-xxxlg .tt-heading-subtitle + p {
-		margin-top: 30px;
-	}
-}
-
-
-/* ----------------------------------------------------------------------------------------- *
- * Page boxed layout
-/* ----------------------------------------------------------------------------------------- */
-
-.tt-wrap {
-	max-width: 1282px;
-	margin-left: auto;
-	margin-right: auto;
-	padding-left: 15px;
-	padding-right: 15px;
-}
-
-/* Adding extra space to the left and right */
-@media (min-width: 992px) and (max-width: 1360px) {
-	.tt-wrap {
-		padding-left: 7vw;
-		padding-right: 7vw;
-	}
-}
-
-/* Nested tt-wrap */
-.tt-wrap .tt-wrap {
-	max-width: 100%;
-	padding-left: 0;
-	padding-right: 0;
-}
-
-
-/* ------------------------------------------------------------- *
- * Body inner
-/* ------------------------------------------------------------- */
-
-#body-inner {
-	position: relative;
-	overflow: hidden;
-	height: 100%;
-	min-height: 100vh;
-	min-height: 100svh;
-}
-
-
-/* ------------------------------------------------------------- *
- * Content wrap
-/* ------------------------------------------------------------- */
-
-#tt-content-wrap {
-	position: relative;
-	overflow: hidden;
-}
-
-
-/* ------------------------------------------------------------- *
- * Page content
-/* ------------------------------------------------------------- */
-
-#tt-page-content {
-}
-
-
-/* ------------------------------------------------------------- *
- * tt-Section
-/* ------------------------------------------------------------- */
-
-.tt-section {
-	position: relative;
-	padding: 80px 0;
-}
-@media (max-width: 768px) {
-	.tt-section {
-		padding-top: 40px;
-		padding-bottom: 40px;
-	}
-}
-
-/* If height-vh classes in use */
-.tt-section[class*="height-vh"] {
-	display: flex;
-	align-items: center;
-	height: 100%;
-}
-
-
-/* tt-section background  
-========================= */
-.tt-section-background {
-	position: absolute;
-	inset: 0;
-	overflow: hidden;
-	z-index: 0;
-}
-.tt-section-background img,
-.tt-section-background video {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	object-position: 50% 50%;
-}
-
-/* If image parallax and zoom-in is enabled */
-.tt-section-background .tt-anim-zoomin-wrap,
-.tt-section-background .tt-image-parallax-wrap,
-.tt-section-background .tt-image-parallax-inner {
-	position: absolute;
-	inset: 0;
-}
-
-/* tt-section background grayscale */
-.tt-section-background.tt-sbg-grayscale {
-	filter: grayscale(1);
-}
-
-/* tt-section background cover */
-.tt-section-background[class*="tt-sbg-cover-"]::before {
-	position: absolute;
-	display: block;
-	content: "";
-	top: -1px;
-	left: -1px;
-	bottom: -1px;
-	right: -1px;
-	background-color: #040404;
-	z-index: 1;
-	opacity: 0;
-}
-.tt-section-background.tt-sbg-cover-0::before { opacity: 0; }
-.tt-section-background.tt-sbg-cover-0-5::before { opacity: .05; }
-.tt-section-background.tt-sbg-cover-1::before { opacity: .1; }
-.tt-section-background.tt-sbg-cover-1-5::before { opacity: .15; }
-.tt-section-background.tt-sbg-cover-2::before { opacity: .2; }
-.tt-section-background.tt-sbg-cover-2-5::before { opacity: .25; }
-.tt-section-background.tt-sbg-cover-3::before { opacity: .3; }
-.tt-section-background.tt-sbg-cover-3-5::before { opacity: .35; }
-.tt-section-background.tt-sbg-cover-4::before { opacity: .4; }
-.tt-section-background.tt-sbg-cover-4-5::before { opacity: .45; }
-.tt-section-background.tt-sbg-cover-5::before { opacity: .5; }
-.tt-section-background.tt-sbg-cover-5-5::before { opacity: .55; }
-.tt-section-background.tt-sbg-cover-6::before { opacity: .6; }
-.tt-section-background.tt-sbg-cover-6-5::before { opacity: .65; }
-.tt-section-background.tt-sbg-cover-7::before { opacity: .7; }
-.tt-section-background.tt-sbg-cover-7-5::before { opacity: .75; }
-.tt-section-background.tt-sbg-cover-8::before { opacity: .8; }
-.tt-section-background.tt-sbg-cover-8-5::before { opacity: .85; }
-.tt-section-background.tt-sbg-cover-9::before { opacity: .9; }
-.tt-section-background.tt-sbg-cover-9-5::before { opacity: .95; }
-
-
-/* If class "tt-sbg-on" is enabled on .tt-section
-================================================== */
-.tt-sbg-on:not(.tt-sbg-is-light-on) {
-	background-color: #222;
-	background-image:
-		radial-gradient(circle at 15% 20%, rgb(191 74 26 / 10%), transparent 60%),
-		url(../img/bg-noise.png);
-	background-repeat: no-repeat, repeat;
-	background-size: cover, 180px 180px;
-	color: #FFF;
-}
-
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-text-reveal > span {
-	color: #FFF;
-	-webkit-text-fill-color: rgb(255 255 255 / 30%);
-}
-
-/* Buttons */
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-secondary {
-	background-color: #FFF;
-}
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-secondary > *, 
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-secondary > *::after {
-	color: #212121;
-}
-
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-outline {
-	box-shadow: inset 0 0 0 2px #FFF;
-}
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-outline > *, 
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-outline > *::after {
-	color: #FFF;
-}
-
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-link > *, 
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-link > *::after {
-	color: #FFF;
-}
-
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-line {
-	background-color: #FFF;
-}
-
-.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-big-round-ptn-inner {
-	color: #FFF;
-}
-
-
-/* If class "tt-sbg-is-light" is enabled on .tt-section
-======================================================== */
-.tt-sbg-is-light-on {
-	color: #212121;
-}
-
-.tt-sbg-is-light-on .tt-text-reveal > span {
-	color: #212121;
-	-webkit-text-fill-color: rgb(0 0 0 / 20%);
-}
-
-/* Buttons */
-.tt-sbg-is-light-on .tt-btn-secondary {
-	background-color: #212121;
-}
-.tt-sbg-is-light-on .tt-btn-secondary > *, 
-.tt-sbg-is-light-on .tt-btn-secondary > *::after {
-	color: #FFF;
-}
-
-.tt-sbg-is-light-on .tt-btn-outline {
-	box-shadow: inset 0 0 0 2px #212121;
-}
-.tt-sbg-is-light-on .tt-btn-outline > *, 
-.tt-sbg-is-light-on .tt-btn-outline > *::after {
-	color: #212121;
-}
-
-.tt-sbg-is-light-on .tt-btn-link > *, 
-.tt-sbg-is-light-on .tt-btn-link > *::after {
-	color: #212121;
-}
-
-.tt-sbg-is-light-on .tt-btn-line {
-	background-color: #212121;
-}
-
-.tt-sbg-is-light-on .tt-big-round-ptn-inner {
-	color: #212121;
-}
-
-
-/* tt-section inner 
-==================== */
-.tt-section-inner {
-	position: relative;
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-}
-
-
-/* ------------------------------------------------------------- *
- * 404 error
-/* ------------------------------------------------------------- */
-
-.tt-404-error {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	width: 100%;
-	min-height: 100vh;
-	min-height: 100svh;
-	padding: 120px 0;
-}
-.tt-404-error-title {
-	margin: 0;
-	text-transform: uppercase;
-	text-align: center;
-	font-family: var(--tt-alter-font);
-	font-size: clamp(72px, 12vw, 230px);
-	font-weight: bold;
-	font-weight: 700;
-	line-height: 0.95;
-}
-.tt-404-error-subtitle {
-	margin-bottom: 40px;
-	text-transform: uppercase;
-	font-size: calc(15px + 0.1vw);
-	font-weight: 500;
-	letter-spacing: 1px;
-	line-height: 1.2;
-}
-.tt-404-error-description {
-	max-width: 700px;
-	margin-top: 30px;
-	text-transform: uppercase;
-	text-align: center;
-	font-weight: normal;
-	line-height: 1.2;
-}
-
+/* Layout — moved to app/styles/_layout.scss */
 
 /* ------------------------------------------------------------- *
  * Header
@@ -1169,7 +332,7 @@ h6.tt-text-uppercase {
 	transform: translate3d(0, 0, 0);
 	transition: transform .4s ease-in-out;
 }
-body:not(.tt-m-menu-open) #tt-header.tt-header-scroll.tt-fly-up {
+body:not(:is([data-menu-state="open"], [data-menu-state="opening"])) #tt-header.tt-header-scroll[data-fly-up] {
 	transform: translate3d(0, -101%, 0);
 }
 
@@ -1197,7 +360,7 @@ body:not(.tt-m-menu-open) #tt-header.tt-header-scroll.tt-fly-up {
 }
 
 /* Header filled */
-#tt-header.tt-filled {
+#tt-header[data-filled] {
 	border-bottom: 1px solid var(--tt-border-color);
 }
 #tt-header::before {
@@ -1207,19 +370,19 @@ body:not(.tt-m-menu-open) #tt-header.tt-header-scroll.tt-fly-up {
 	z-index: -1;
 	transition: background-color .3s;
 }
-#tt-header.tt-filled::before {
+#tt-header[data-filled]::before {
 	background-color: var(--tt-bg-color);
 }
 
 @media (min-width: 1025px) {
-	#tt-header.tt-filled .tt-header-inner {
+	#tt-header[data-filled] .tt-header-inner {
 		margin-top: 0;
 	}
 }
-#tt-header.tt-filled .tt-bg-noise {
+#tt-header[data-filled] .tt-bg-noise {
 	z-index: 0;
 }
-#tt-header:not(.tt-filled) .tt-bg-noise {
+#tt-header:not([data-filled]) .tt-bg-noise {
 	display: none;
 }
 
@@ -1559,7 +722,7 @@ body:not(.tt-m-menu-open) #tt-header.tt-header-scroll.tt-fly-up {
 		overflow-y: scroll;
 		z-index: 2;
 	}
-	body.is-mobile .tt-main-menu-holder {
+	body[data-touch] .tt-main-menu-holder {
 	}
 	.tt-main-menu-inner {
 		display: table;
@@ -1788,21 +951,21 @@ body:not(.tt-m-menu-open) #tt-header.tt-header-scroll.tt-fly-up {
 		color: var(--tt-text-color);
 		letter-spacing: 1px;
 	}
-	body.tt-m-menu-open .tt-m-menu-toggle-btn-text .tt-m-menu-text-menu {
+	body:is([data-menu-state="open"], [data-menu-state="opening"]) .tt-m-menu-toggle-btn-text .tt-m-menu-text-menu {
 		display: none;
 	}
 
 	/* Toggle button close */
-	body.tt-m-menu-open .tt-m-menu-toggle-btn span {
+	body:is([data-menu-state="open"], [data-menu-state="opening"]) .tt-m-menu-toggle-btn span {
 		width: 20px;
 		background-color: transparent;
 	}
-	body.tt-m-menu-open .tt-m-menu-toggle-btn span::before {
+	body:is([data-menu-state="open"], [data-menu-state="opening"]) .tt-m-menu-toggle-btn span::before {
 		top: 0;
 		width: 20px;
 		transform: rotate(45deg);
 	}
-	body.tt-m-menu-open .tt-m-menu-toggle-btn span::after {
+	body:is([data-menu-state="open"], [data-menu-state="opening"]) .tt-m-menu-toggle-btn span::after {
 		bottom: 0;
 		width: 20px;
 		transform: rotate(-45deg);
@@ -1811,12 +974,12 @@ body:not(.tt-m-menu-open) #tt-header.tt-header-scroll.tt-fly-up {
 	.tt-m-menu-toggle-btn-text .tt-m-menu-text-close {
 		display: none;
 	}
-	body.tt-m-menu-open .tt-m-menu-toggle-btn-text .tt-m-menu-text-close {
+	body:is([data-menu-state="open"], [data-menu-state="opening"]) .tt-m-menu-toggle-btn-text .tt-m-menu-text-close {
 		display: block;
 	}
 
 	/* Disable menu toggle button click until the animations last */
-	body.tt-m-menu-toggle-no-click #tt-m-menu-toggle-btn-wrap {
+	body:is([data-menu-state="opening"], [data-menu-state="closing"]) #tt-m-menu-toggle-btn-wrap {
 		pointer-events: none;
 	}
 
@@ -2152,7 +1315,7 @@ body.ph-mask-on .page-header-inner:not(.ph-mask) .ph-caption {
 	transition: clip-path .12s;
 	will-change: clip-path;
 }
-body.ph-mask-active .ph-mask {
+body[data-mask-active] .ph-mask {
 	clip-path: circle(clamp(100px, 13vw, 230px) at var(--x, 50%) var(--y, 50%));
 }
 
@@ -2181,7 +1344,7 @@ body.ph-mask-active .ph-mask {
 }
 
 /* Disable mask on mobile devices */
-body.is-mobile .ph-mask {
+body[data-touch] .ph-mask {
 	display: none !important;
 }
 
@@ -2538,77 +1701,77 @@ body.is-mobile .ph-mask {
 
 /* If the page header background image/video exist (make all elements light for better visibility)
 =================================================== */
-body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled),
-body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) {
+body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]),
+body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) {
 	color: var(--tt-force-to-light-color);
 }
 
 /* Make logo light */ 
-body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-light,
-body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-light {
+body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-light,
+body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-light {
 	display: block;
 }
-body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-dark,
-body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-dark {
+body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-dark,
+body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-dark {
 	display: none;
 }
 
 /* Make menu items light (for desctop only) */
 @media (min-width: 1025px) {
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-main-menu-list > li > a, 
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-main-menu-list > li > .tt-submenu-trigger > a,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-main-menu-list > li > a, 
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-main-menu-list > li > .tt-submenu-trigger > a {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-main-menu-list > li > a, 
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-main-menu-list > li > .tt-submenu-trigger > a,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-main-menu-list > li > a, 
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-main-menu-list > li > .tt-submenu-trigger > a {
 		color: var(--tt-force-to-light-color);
 	}
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-submenu-master > .tt-submenu-trigger > a::after,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-submenu-master > .tt-submenu-trigger > a::after {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-submenu-master > .tt-submenu-trigger > a::after,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-submenu-master > .tt-submenu-trigger > a::after {
 		background-color: var(--tt-force-to-light-color);
 	}
 }
 
 /* Make mobile menu trigger light */
-body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn-text,
-body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn-text {
+body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn-text,
+body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn-text {
 	color: var(--tt-force-to-light-color);
 }
-body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::before, 
-body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::after,
-body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::before, 
-body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::after {
+body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::before, 
+body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::after,
+body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::before, 
+body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::after {
 	background-color: var(--tt-force-to-light-color);
 }
 
 /* Make header buttons light */
 @media (min-width: 1025px) { 
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-secondary,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-secondary {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-secondary,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-secondary {
 		background-color: var(--tt-force-to-light-color);
 	}
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-secondary > *, 
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-secondary > *::after,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-secondary > *, 
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-secondary > *::after {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-secondary > *, 
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-secondary > *::after,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-secondary > *, 
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-secondary > *::after {
 		color: #212121;
 	}
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-outline,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-outline {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-outline,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-outline {
 		box-shadow: inset 0 0 0 2px var(--tt-force-to-light-color);
 	}
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-outline > *, 
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-outline > *::after,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-outline > *, 
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-outline > *::after {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-outline > *, 
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-outline > *::after,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-outline > *, 
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-outline > *::after {
 		color: var(--tt-force-to-light-color);
 	}
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-link > *, 
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-link > *::after,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-link > *, 
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-link > *::after {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-link > *, 
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-link > *::after,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-link > *, 
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-link > *::after {
 		color: var(--tt-force-to-light-color);
 	}
-	body.ph-image-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-line,
-	body.ph-video-on.tt-ph-visible:not(.ph-bg-is-light-on) #tt-header:not(.tt-filled) .tt-btn-line {
+	body.ph-image-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-line,
+	body.ph-video-on[data-ph-visible]:not(.ph-bg-is-light-on) #tt-header:not([data-filled]) .tt-btn-line {
 		background-color: var(--tt-force-to-light-color);
 	}
 }
@@ -2684,59 +1847,59 @@ body.ph-video-on:not(.ph-bg-is-light-on) #page-header .tt-btn-line {
 
 /* If the page header background image is light (effect only if the image exist)
 ================================================ */
-body.ph-bg-is-light-on.tt-ph-visible:not(.tt-m-menu-active) #tt-header:not(.tt-filled) {
+body.ph-bg-is-light-on[data-ph-visible]:not([data-menu-state]) #tt-header:not([data-filled]) {
 	color: var(--tt-dark-color);
 }
 
 /* Make logo dark */ 
-body.ph-bg-is-light-on.tt-ph-visible:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-light {
+body.ph-bg-is-light-on[data-ph-visible]:not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-light {
 	display: none;
 }
-body.ph-bg-is-light-on.tt-ph-visible:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-dark {
+body.ph-bg-is-light-on[data-ph-visible]:not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-dark {
 	display: block;
 }
 
 /* Make menu items dark (for desctop only) */
 @media (min-width: 1025px) {
-	body.ph-bg-is-light-on.tt-ph-visible #tt-header:not(.tt-filled) .tt-main-menu-list > li > a, 
-	body.ph-bg-is-light-on.tt-ph-visible #tt-header:not(.tt-filled) .tt-main-menu-list > li > .tt-submenu-trigger > a {
+	body.ph-bg-is-light-on[data-ph-visible] #tt-header:not([data-filled]) .tt-main-menu-list > li > a, 
+	body.ph-bg-is-light-on[data-ph-visible] #tt-header:not([data-filled]) .tt-main-menu-list > li > .tt-submenu-trigger > a {
 		color: var(--tt-dark-color);
 	}
-	body.ph-bg-is-light-on.tt-ph-visible #tt-header:not(.tt-filled) .tt-submenu-master > .tt-submenu-trigger > a::after {
+	body.ph-bg-is-light-on[data-ph-visible] #tt-header:not([data-filled]) .tt-submenu-master > .tt-submenu-trigger > a::after {
 		background-color: var(--tt-dark-color);
 	}
 }
 
 /* Make mobile menu trigger dark */
-body.ph-bg-is-light-on.tt-ph-visible:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn-text {
+body.ph-bg-is-light-on[data-ph-visible]:not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn-text {
 	color: var(--tt-dark-color);
 }
-body.ph-bg-is-light-on.tt-ph-visible:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::before, 
-body.ph-bg-is-light-on.tt-ph-visible:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::after {
+body.ph-bg-is-light-on[data-ph-visible]:not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::before, 
+body.ph-bg-is-light-on[data-ph-visible]:not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::after {
 	background-color: var(--tt-dark-color);
 }
 
 /* Make header buttons dark */
 @media (min-width: 1025px) { 
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-secondary {
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-secondary {
 		background-color: var(--tt-dark-color);
 	}
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-secondary > *, 
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-secondary > *::after {
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-secondary > *, 
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-secondary > *::after {
 		color: var(--tt-light-color);
 	}
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-outline {
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-outline {
 		box-shadow: inset 0 0 0 2px var(--tt-dark-color);
 	}
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-outline > *, 
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-outline > *::after {
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-outline > *, 
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-outline > *::after {
 		color: var(--tt-dark-color);
 	}
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-link > *, 
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-link > *::after {
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-link > *, 
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-link > *::after {
 		color: var(--tt-dark-color);
 	}
-	body.ph-bg-is-light-on #tt-header:not(.tt-filled) .tt-btn-line {
+	body.ph-bg-is-light-on #tt-header:not([data-filled]) .tt-btn-line {
 		background-color: var(--tt-dark-color);
 	}
 }
@@ -3066,7 +2229,7 @@ input[type=radio] {
 /* textarea */
 textarea,
 textarea.tt-form-control {
-	padding: 15px
+	padding: 15px;
 	resize: vertical;
 }
 
@@ -3784,8 +2947,8 @@ input[type=range] {
 
 /* Compensate the width of the vertical scrollbar if fancybox is open */
 html.lenis.with-fancybox,
-html.with-fancybox body:not(.is-mobile) #tt-header,
-html.with-fancybox body:not(.is-mobile) .tt-scroll-to-top {
+html.with-fancybox body:not([data-touch]) #tt-header,
+html.with-fancybox body:not([data-touch]) .tt-scroll-to-top {
 	padding-right: 11px;
 }
 
@@ -3810,7 +2973,7 @@ body.tt-magic-cursor.fancybox-is-open #magic-cursor {
 }
 
 /* tt-lightbox icon (for mobile devices only!) */
-body:not(.is-mobile) .tt-lightbox-icon {
+body:not([data-touch]) .tt-lightbox-icon {
 	display: none !important;
 }
 .tt-lightbox-icon {
@@ -4066,271 +3229,7 @@ a.tt-image-link {
 }
 
 
-/* ------------------------------------------------------------- *
- * Buttons
-/* ------------------------------------------------------------- */
-
-button {
-	background-color: transparent;
-	cursor: pointer;
-	border: none;
-}
-
-.tt-btn {
-	position: relative;
-	display: inline-flex;
-	align-items: center;
-	height: 52px;
-	background-color: transparent;
-	margin: 12px 7px;
-	padding: 0 30px;
-	text-transform: uppercase;
-	text-align: center;
-	font-size: 15px;
-	font-weight: 500;
-	overflow: hidden;
-	cursor: pointer;
-	letter-spacing: 0.5px;
-	border: none;
-	border-radius: 100px;
-	z-index: 9;
-}
-
-.tt-btn-inner { /* Added by .js */
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	width: 100%;
-	height: auto;
-	overflow: hidden;
-	line-height: 1;
-}
-
-.tt-btn-inner > * {
-	position: relative;
-	padding: 5px 0;
-	transition: transform 0.3s;
-}
-.tt-btn-inner > *,
-.tt-btn-inner > *::after {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	height: 100%;
-}
-.tt-btn-inner > *::after {
-	position: absolute;
-	content: attr(data-hover);
-	top: 100%;
-	width: 100%;
-	left: 0;
-	padding-left: 0;
-	padding-right: 0;
-}
-.tt-btn:hover .tt-btn-inner > *:not(.tt-btn-icon) {
-	transform: translate3d(0, -100%, 0);
-}
-
-/* Button icon */
-.tt-btn-icon {
-	display: inline-flex;
-	font-size: 130%;
-}
-.tt-btn-icon:first-child {
-	margin-right: 12px;
-}
-.tt-btn-icon:last-child {
-	margin-left: 12px;
-}
-
-/* Magnetic button */
-.tt-magnetic-btn {
-	display: inline-block;
-	margin: 12px 7px;
-}
-.tt-magnetic-btn .tt-btn {
-	margin: 0;
-}
-
-
-/* Button styles 
-================= */
-/* Button full width */
-.tt-btn-full {
-	display: flex;
-	width: 100%;
-	text-align: center;
-}
-
-/* Button round */
-.tt-btn-round {
-	width: 110px;
-	height: 110px;
-	padding: 0;
-}
-@media (max-width: 1024px) {
-	.tt-btn-round {
-		width: 100px;
-		height: 100px;
-	}
-}
-.tt-btn-round .tt-btn-inner > * {
-   padding: 10px 0;
-}
-
-/* Button primary */
-.tt-btn-primary {
-	background-color: var(--tt-main-color);
-}
-.tt-btn-primary > *,
-.tt-btn-primary > *::after {
-	color: #FFF;
-}
-
-/* Button secondary */
-.tt-btn-secondary {
-	background-color: var(--tt-light-color);
-}
-.tt-btn-secondary > *,
-.tt-btn-secondary > *::after {
-	color: var(--tt-dark-color);
-}
-
-/* Button outline */
-.tt-btn-outline {
-	box-shadow: inset 0 0 0 2px var(--tt-light-color);
-}
-.tt-btn-outline > *,
-.tt-btn-outline > *::after {
-	color: var(--tt-light-color);
-}
-
-/* Button dark */
-.tt-btn-dark {
-	background-color: #292929;
-}
-.tt-btn-dark > *,
-.tt-btn-dark > *::after {
-	color: #FFF;
-}
-
-/* Button link */
-.tt-btn-link {
-	padding: 0;
-	align-items: center;
-	text-transform: none;
-	font-size: 17px;
-	font-weight: normal;
-	letter-spacing: 0;
-	border-radius: 0;
-}
-.tt-btn-link > *,
-.tt-btn-link > *::after {
-	padding: 0;
-	color: var(--tt-text-color);
-}
-
-
-/* Button line (alternative to the icon)
-=============== */
-.tt-btn-line {
-	display: inline-block;
-	width: 40px;
-	height: 1px;
-	background-color: var(--tt-text-color);
-	margin-top: 2px;
-}
-body:not(.is-mobile) .tt-btn:hover .tt-btn-line {
-	animation: swipe-line .8s cubic-bezier(0.475, 0.425, 0, 0.995) forwards;
-}
-
-@keyframes swipe-line {
-	0% {
-		transform-origin: right;
-		transform: scale(1); 
-	}
-	33% {
-		transform-origin: right;
-		transform: scaleX(0); 
-	}
-	66% {
-		transform-origin: left;
-		transform: scaleX(0); 
-	}
-	to {
-		transform-origin: left;
-		transform: scale(1); } 
-}
-
-/* Button disabled */
-.tt-btn.tt-btn-disabled {
-	opacity: .4;
-	cursor: not-allowed;
-}
-
-
-/* Big round button 
-==================== */
-.tt-big-round-ptn {
-	position: relative;
-	display: inline-block;
-}
-.tt-big-round-ptn-holder {
-	display: block;
-}
-.tt-big-round-ptn-inner {
-	position: relative;
-	width: 200px;
-	height: 200px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	text-transform: uppercase;
-	text-align: center;
-	font-family: var(--tt-alter-font);
-	font-size: clamp(21px, 2vw, 28px);
-	font-weight: 600;
-	color: var(--tt-text-color);
-	line-height: 1.1;
-	letter-spacing: 1px;
-	border-radius: 50%;
-	border: 2px solid var(--tt-main-color);
-	transform: rotate(-20deg);
-	transition: all .2s;
-}
-.tt-big-round-ptn-inner:hover,
-.tt-big-round-ptn-inner:focus {
-	background-color: var(--tt-main-color);
-	color: #FFF;
-	transform: rotate(0deg);
-}
-
-.tt-big-round-ptn-inner::before {
-	position: absolute;
-	display: block;
-	content: "";
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	border-radius: 50%;
-	border: 2px solid var(--tt-main-color);
-	transform: translate3d(8px, 8px, 0px);
-	transition: all .3s;
-}
-.tt-big-round-ptn-inner:hover::before {
-	transform: translate3d(0px, 0px, 0px);
-	opacity: 0;
-}
-
-@media (max-width: 1400px) {
-	.tt-big-round-ptn-inner {
-		width: 160px;
-		height: 160px;
-		font-size: 26px;
-	}
-}
-
+/* Buttons — moved to app/styles/_buttons.scss */
 
 /* ------------------------------------------------------------- *
  * Social buttons
@@ -4533,7 +3432,7 @@ body:not(.tt-magic-cursor) .tt-social-buttons > ul > li a:hover {
 
 /* tt-Clipper button 
 ===================== */
-body:not(.is-mobile) .tt-clipper-btn {
+body:not([data-touch]) .tt-clipper-btn {
 	display: none;
 }
 .tt-clipper-btn {
@@ -4705,117 +3604,7 @@ a.tt-logo-wall-item:hover img {
 }
 
 
-/* ------------------------------------------------------------- *
- * Scrolling text
-/* ------------------------------------------------------------- */
-
-.tt-scrolling-text {
-	position: relative;
-	display: flex;
-	padding: 10px 0;
-	text-transform: uppercase;
-	font-family: var(--tt-alter-font);
-	font-size: calc(21px + 5.5vw);
-	line-height: 1;
-	font-weight: bold;
-	font-weight: 600;
-	overflow: hidden;
-}
-
-.tt-scrt-inner {
-	display: flex;
-	width: fit-content;
-	flex: auto;
-	flex-shrink: 0;
-	flex-direction: row;
-}
-.tt-scrt-content {
-	display: inline-flex;
-	align-items: center;
-	flex-shrink: 0;
-	will-change: transform;
-}
-
-/* Scrolling text separator  
-============================ */
-.tt-scrt-separator {
-	display: flex;
-	margin: 0 3vw;
-}
-.tt-scrt-separator > i {
-	font-size: calc(16px + 3vw);
-}
-.tt-scrt-separator > svg {
-	height: calc(20px + 2.5vw);
-	fill: var(--tt-text-color);
-}
-
-/* If class "scrt-dyn-separator" and data attribute "data-opposite-direction" is enabled */
-.tt-scrolling-text.scrt-dyn-separator[data-opposite-direction="true"] .tt-scrt-separator > i,
-.tt-scrolling-text.scrt-dyn-separator[data-opposite-direction="true"] .tt-scrt-separator > svg {
-	transform: rotate(180deg);
-}
-
-/* Dynamic separator */
-.tt-scrolling-text.scrt-dyn-separator .tt-scrt-separator {
-	transform: scaleX(-1); /* You can use "rotate(180deg)" instead */
-	transition: transform .3s;
-}
-.tt-scrolling-text.scrolled-up.scrt-dyn-separator .tt-scrt-separator {
-	transform: scaleX(1); /* You can use "rotate(0deg)" instead */
-}
-
-
-/* Crossed scrolling text  
-========================== */
-.tt-scrolling-text-crossed {
-	display: block;
-	padding-top: calc(30px + 3vw);
-	padding-bottom: calc(30px + 3vw);
-	overflow: hidden;
-}
-.tt-scrolling-text-crossed-inner {
-	margin-left: -50px;
-	margin-right: -50px;
-}
-.tt-scrolling-text-crossed .tt-scrolling-text {
-	padding: 5px 0;
-	background-color: var(--tt-bg-color);
-}
-
-.bg-white .tt-scrolling-text-crossed .tt-scrolling-text {
-	background-color: #ededed;
-}
-
-.tt-scrolling-text-crossed .tt-scrolling-text {
-	padding: 20px 0;
-}
-.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(1) {
-	transform: translateY(50%) rotate(8deg);
-}
-.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(2) {
-	transform: translateY(-50%) rotate(-8deg);
-}
-@media (max-width: 991px) {
-	.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(1) {
-		transform: translateY(50%) rotate(12deg);
-	}
-	.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(2) {
-		transform: translateY(-50%) rotate(-12deg);
-	}
-}
-
-
-/* Scrolling text reverse colors
-================================= */
-.tt-scrolling-text.scrt-color-reverse {
-	background-color: var(--tt-text-color);
-	color: var(--tt-bg-color);
-}
-.tt-scrolling-text.scrt-color-reverse .tt-scrt-separator > svg {
-	fill: var(--tt-bg-color);
-}
-
+/* Marquee — moved to app/styles/_marquee.scss */
 
 /* ------------------------------------------------------------- *
  * Accordion
@@ -5024,7 +3813,7 @@ a.tt-logo-wall-item:hover img {
 
 /* Accordion hover 
 =================== */
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-ac-head-title {
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-ac-head-title {
 	display: inline;
 	color: var(--tt-text-color);
 	-webkit-text-fill-color: var(--tt-linear-text-bg-color);
@@ -5034,27 +3823,27 @@ body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-ac-head-title {
 	transition: 0.6s cubic-bezier(.215,.61,.355,1);
 	will-change: background-size;
 }
-body:not(.is-mobile) .tt-accordion.tt-ac-hover:hover .tt-ac-head-title {
+body:not([data-touch]) .tt-accordion.tt-ac-hover:hover .tt-ac-head-title {
 	background-size: 0 100%;
 }
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-ac-head-title,
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-heading:hover .tt-ac-head-title,
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-ac-head-title {
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-ac-head-title,
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-accordion-heading:hover .tt-ac-head-title,
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-ac-head-title {
 	background-size: 100% 100%;
 }
 
-body:not(.is-mobile) .tt-accordion.tt-ac-counter .tt-ac-head::before,
-body:not(.is-mobile) .tt-accordion-caret {
+body:not([data-touch]) .tt-accordion.tt-ac-counter .tt-ac-head::before,
+body:not([data-touch]) .tt-accordion-caret {
 	transition: opacity .3s;
 }
-body:not(.is-mobile) .tt-accordion.tt-ac-hover.tt-ac-counter:hover .tt-ac-head::before,
-body:not(.is-mobile) .tt-accordion.tt-ac-hover:hover .tt-accordion-caret {
+body:not([data-touch]) .tt-accordion.tt-ac-hover.tt-ac-counter:hover .tt-ac-head::before,
+body:not([data-touch]) .tt-accordion.tt-ac-hover:hover .tt-accordion-caret {
 	opacity: .3;
 }
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-heading:hover .tt-ac-head::before,
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-ac-head::before,
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-heading:hover .tt-accordion-caret,
-body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-accordion-caret {
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-accordion-heading:hover .tt-ac-head::before,
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-ac-head::before,
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-accordion-heading:hover .tt-accordion-caret,
+body:not([data-touch]) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-accordion-caret {
 	opacity: 1
 }
 
@@ -5158,237 +3947,7 @@ body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-acc
 }
 
 
-/* ------------------------------------------------------------- *
- * Horizontal accordion
-/* ------------------------------------------------------------- */
-
-.tt-haci-title {
-	text-transform: uppercase;
-	font-family: var(--tt-alter-font);
-	font-size: clamp(34px, 4vw, 76px);
-	font-weight: 600;
-	color: inherit;
-	line-height: 1;
-}
-
-/* Horizontal accordion item count */
-.tt-hac-item {
-	counter-increment: tt-hac-item-counter;
-}
-.tt-hac-item-count::before {
-	display: block;
-	content: counter(tt-hac-item-counter, decimal-leading-zero);
-	font-family: var(--tt-alter-font);
-	line-height: 1;
-}
-
-
-/* For desktop only 
-==================== */
-@media (min-width: 1025px) {
-	.tt-horizontal-accordion {
-		display: flex;
-		max-width: 2200px;
-		padding-left: 4%;
-		padding-right: 4%;
-		margin: auto;
-		overflow: hidden;
-	}
-	.tt-wrap .tt-horizontal-accordion {
-		padding-left: 0;
-		padding-right: 0;
-	}
-
-	/* Horizontal accordion item */
-	.tt-hac-item {
-		position: relative;
-		flex: 1 1;
-		background-color: var(--tt-bg-color);
-		padding: clamp(15px, 3vw, 35px);
-		border: 1px solid var(--tt-border-color);
-		border-radius: 25px;
-		transition: 
-			flex-grow .6s cubic-bezier(.38,.005,.215,1), 
-			margin .6s cubic-bezier(.38,.005,.215,1), 
-			background .6s cubic-bezier(.38,.005,.215,1),
-			color .6s cubic-bezier(.38,.005,.215,1);
-		will-change: flex-grow, margin-left, color;
-	}
-	.tt-hac-item:not(:last-child) {
-		box-shadow: 20px 0 10px -20px rgb(0 0 0);
-	}
-
-	.tt-hac-item-inner {
-		height: 100%;
-		transition: opacity .3s ease;
-	}
-
-	/* Horizontal accordion item hover */
-	.tt-hac-item:first-child {
-		flex-grow: 1.3;
-	}
-	.tt-hac-item:not(:first-child) {
-		margin-left: -10%;
-		padding-left: clamp(15px, 3vw, 45px);
-	}
-	.tt-hac-item.active {
-		flex-grow: 1.3;
-		margin-left: -1%;
-	}
-
-	/* Horizontal accordion item alternative hover */
-	.tt-hac-alter-hover .tt-hac-item:first-child,
-	.tt-hac-alter-hover .tt-hac-item.active {
-		background-color: var(--tt-light-color);
-		color: var(--tt-dark-color);
-		border-color: transparent;
-	}
-	.tt-hac-alter-hover .tt-hac-item:first-child.inactive {
-		background-color: var(--tt-bg-color);
-		color: var(--tt-text-color);
-		border-color: var(--tt-border-color);
-	}
-
-	.tt-hac-alter-hover .tt-hac-item:first-child .tt-btn-outline > *,
-	.tt-hac-alter-hover .tt-hac-item.active .tt-btn-outline > *,
-	.tt-hac-alter-hover .tt-hac-item:first-child .tt-btn-outline > *:after,
-	.tt-hac-alter-hover .tt-hac-item.active .tt-btn-outline > *:after {
-		color: var(--tt-dark-color);
-	}
-	.tt-hac-alter-hover .tt-hac-item:first-child .tt-btn-outline,
-	.tt-hac-alter-hover .tt-hac-item.active .tt-btn-outline {
-		box-shadow: inset 0 0 0 2px var(--tt-dark-color);
-	}
-	.tt-hac-alter-hover .tt-hac-item:first-child.inactive .tt-btn-outline > *,
-	.tt-hac-alter-hover .tt-hac-item:first-child.inactive .tt-btn-outline > *:after {
-		color: var(--tt-text-color);
-	}
-	.tt-hac-alter-hover .tt-hac-item:first-child.inactive .tt-btn-outline {
-		box-shadow: inset 0 0 0 2px var(--tt-light-color);
-	}
-
-	/* Horizontal accordion item count */
-	.tt-hac-item-count {
-		position: absolute;
-		top: 20px;
-		right: 5%;
-	}
-	.tt-hac-item-count::before {
-		font-size: clamp(34px, 3vw, 52px);
-		font-weight: normal;
-		opacity: .3;
-	}
-
-	/* Horizontal accordion item content */
-	.tt-hac-item-content {
-		width: 100%;
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-	.tt-hac-item-content a {
-		color: var(--tt-link-color);
-	}
-
-	.tt-haci-title {
-	}
-
-	.tt-haci-description {
-		font-size: 16px;
-		opacity: .8;
-
-		display: -webkit-box;
-		-webkit-line-clamp: 4; /* How many lines of text to display */
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-	}
-
-	/* Content top */
-	.tt-haci-content-top {
-		overflow: hidden;
-	}
-
-	/* Content bottom */
-	.tt-haci-content-bottom {
-		margin-top: 30px;
-	}
-	.tt-hac-item:not(:first-child) .tt-haci-content-bottom {
-		opacity: 0;
-		transform: translate3d(-40px, 0, 0);
-		transition: transform .4s cubic-bezier(.38,.005,.215,1), opacity .4s cubic-bezier(.38,.005,.215,1);
-	}
-	.tt-hac-item:not(:first-child).active .tt-haci-content-bottom {
-		opacity: 1;
-		transform: translate3d(0, 0, 0);
-	}
-
-}
-
-
-/* For small screens only 
-========================== */
-@media (max-width: 1024px) {
-	.tt-horizontal-accordion {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-		gap: 15px;
-		padding-left: 15px;
-		padding-right: 15px;
-	}
-
-	/* Horizontal accordion item */
-	.tt-hac-item {
-		position: relative;
-		width: unset !important;
-		padding: 7% 5%;
-		border-radius: 15px;
-		border: 1px solid var(--tt-border-color);
-	}
-	.tt-hac-item-inner {
-		height: 100%;
-	}
-
-	/* Horizontal accordion item count */
-	.tt-hac-item-count {
-		position: absolute;
-		top: 20px;
-		right: 20px;
-	}
-	.tt-hac-item-count::before {
-		font-size: clamp(34px, 3vw, 52px);
-		font-weight: normal;
-		opacity: .4;
-	}
-
-	/* Horizontal accordion item content */
-	.tt-hac-item-content {
-		height: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-between;
-	}
-	.tt-haci-title {
-	}
-	.tt-haci-title br {
-		display: none;
-	}
-	.tt-haci-description {
-		font-size: 16px;
-		opacity: .8;
-
-		display: -webkit-box;
-		-webkit-line-clamp: 4; /* How many lines of text to display */
-		-webkit-box-orient: vertical;
-		overflow: hidden;
-	}
-
-	/* Content bottom */
-	.tt-haci-content-bottom {
-		margin-top: 20px;
-	}
-}
-
+/* Accordion — moved to app/styles/_accordion.scss */
 
 /* -------------------------------------- *
  * Moving images
@@ -5467,110 +4026,7 @@ body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-acc
 }
 
 
-/* ------------------------------------------------------------- *
- * Sticky testimonials 
-/* ------------------------------------------------------------- */
-
-.tt-sticky-testimonials {
-	position: relative;
-	counter-reset: tt-testimonials-counter;
-}
-
-
-/* Sticky testimonials item 
-============================ */
-.tt-stte-item {
-	position: relative;
-	width: 100%;
-	margin-bottom: 30px;
-	will-change: scale;
-}
-
-/* Card */
-.tt-stte-card {
-	position: relative;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	background-color: var(--tt-bg-color);
-	padding: 7% 8%;
-	z-index: 1;
-	border-radius: 15px;
-	border: 1px solid var(--tt-border-color);
-}
-@media (max-width: 768px) {
-	.tt-stte-card {
-		padding: 60px 20px 40px 20px;
-	}
-}
-
-/* Card counter */
-.tt-stte-card-counter {
-	position: absolute;
-	top: 20px;
-	left: 20px;
-}
-.tt-stte-card-counter::before {
-	display: block;
-	counter-increment: tt-testimonials-counter;
-	content: counter(tt-testimonials-counter, decimal-leading-zero);
-	font-family: var(--tt-alter-font);
-	font-size: clamp(28px, 2vw, 34px);
-	font-weight: normal;
-	line-height: 1;
-	opacity: .3;
-	z-index: -1;
-}
-@media (max-width: 768px) {
-	.tt-stte-card-counter::before {
-		font-size: 24px;
-	}
-}
-
-/* Caption */
-.tt-stte-card-caption {
-	position: relative;
-	max-width: 700px;
-}
-.tt-stte-text {
-	font-size: clamp(19px, 2vw, 24px);
-	font-style: italic;
-	text-wrap: pretty;
-}
-.tt-stte-subtext {
-	margin-top: 20px;
-	font-size: 17px;
-	opacity: .5;
-}
-.tt-stte-subtext a {
-	color: currentColor;
-}
-
-
-/* Card content alignment 
-========================== */
-.tt-sticky-testimonials.tt-stte-center .tt-stte-card-caption {
-	text-align: center;
-	padding: 0;
-}
-.tt-sticky-testimonials.tt-stte-center .tt-stte-card-counter {
-	position: relative;
-	top: auto;
-	left: auto;
-	margin-bottom: 30px;
-}
-
-
-/* Card reversed colors style 
-============================== */
-.tt-sticky-testimonials.tt-stte-reversed-colors .tt-stte-card {
-	background-color: var(--tt-light-color);
-	color: var(--tt-dark-color);
-	border: none;
-}
-
+/* Sticky — moved to app/styles/_sticky.scss */
 
 /* ------------------------------------------------------------- *
  * tt-Grid
@@ -5645,10 +4101,10 @@ body:not(.is-mobile) .tt-accordion.tt-ac-hover .tt-accordion-item.active .tt-acc
 	display: inline-block;
 	transition: transform 0.3s;
 }
-body:not(.is-mobile) .ttgr-cat-trigger:hover .ttgr-cat-text > span {
+body:not([data-touch]) .ttgr-cat-trigger:hover .ttgr-cat-text > span {
 	transform: translate3d(0, -100%, 0);
 }
-body:not(.is-mobile) .ttgr-cat-text > span::before {
+body:not([data-touch]) .ttgr-cat-text > span::before {
 	position: absolute;
 	content: attr(data-hover);
 	top: 100%;
@@ -5775,7 +4231,7 @@ body.ttgr-cat-fixed-on .tt-grid-top {
 }
 
 /* tt-Ggrid categories list hover */
-body:not(.is-mobile) {
+body:not([data-touch]) {
 	.ttgr-cat-item > a {
 		opacity: 1;
 		-webkit-text-fill-color: var(--tt-linear-text-bg-color);
@@ -5810,7 +4266,7 @@ body:not(.is-mobile) {
 	letter-spacing: 1px;
 	z-index: 9;
 }
-body:not(.is-mobile) .ttgr-cat-close-btn {
+body:not([data-touch]) .ttgr-cat-close-btn {
 	display: none;
 }
 
@@ -6805,23 +5261,23 @@ a.pgi-category:hover {
 }
 
 /* Caption hover (effect only with "pgi-cap-inside") */
-body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .pgi-title {
+body:not([data-touch]) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .pgi-title {
 	transform: translate3d(0, 15px, 0);
 	transition: all 0.25s ease-out;
 	transition-delay: 0.1s;
 }
-body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-grid-item:hover .pgi-title {
+body:not([data-touch]) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-grid-item:hover .pgi-title {
 	transform: translate3d(0, 0, 0);
 }
 
-body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .pgi-categories-wrap {
+body:not([data-touch]) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .pgi-categories-wrap {
 	opacity: 0;
 	visibility: hidden;
 	transform: translate3d(0, 20px, 0);
 	transition: all 0.25s ease-out;
 	transition-delay: 0.1s;
 }
-body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-grid-item:hover .pgi-categories-wrap {
+body:not([data-touch]) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-grid-item:hover .pgi-categories-wrap {
 	opacity: 1;
 	visibility: visible;
 	transform: translate3d(0, 0, 0);
@@ -7007,7 +5463,7 @@ body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-gri
 
 	/* Portfolio preview list item hover
 	===================================== */
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppli-title {
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppli-title {
 		display: inline;
 		color: var(--tt-text-color);
 		-webkit-text-fill-color: var(--tt-linear-text-bg-color);
@@ -7018,33 +5474,33 @@ body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-gri
 		transition: 0.6s cubic-bezier(.215,.61,.355,1);
 		will-change: background-size;
 	}
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-title {
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-title {
 		background-size: 0% 100%;
 	}
 
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-title, 
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:focus .tt-ppli-title {
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-title, 
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:focus .tt-ppli-title {
 		background-size: 100% 100%;
 	}
 
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-count::before,
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-categories,
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-info {
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-count::before,
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-categories,
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-items-list:hover .tt-ppli-info {
 		opacity: .3;
 	}
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-categories,
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-info {
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-categories,
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-info {
 		opacity: 1;
 	}
 
-	body:not(.is-mobile) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-count::before {
+	body:not([data-touch]) .tt-portfolio-preview-list.tt-ppli-hover .tt-ppl-item:hover .tt-ppli-count::before {
 		opacity: .9;
 	}
 
 
 	/* Portfolio preview list item preview
 	======================================= */
-	body.is-mobile .tt-ppli-preview { 
+	body[data-touch] .tt-ppli-preview { 
 		display: none !important;
 	}
 
@@ -7371,7 +5827,7 @@ body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-gri
 ============================================= */
 @media (min-width: 768px) {
 	/* Caption hover */
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover .pcli-title {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover .pcli-title {
 		display: inline;
 		color: var(--tt-text-color);
 		-webkit-text-fill-color: var(--tt-linear-text-bg-color);
@@ -7382,37 +5838,37 @@ body:not(.is-mobile) #portfolio-grid.pgi-cap-inside.pgi-cap-hover .portfolio-gri
 		transition: 0.6s cubic-bezier(.215,.61,.355,1);
 		will-change: background-size;
 	}
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover:hover .pcli-title {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover:hover .pcli-title {
 		background-size: 0% 100%;
 	}
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:hover .pcli-title, 
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:focus .pcli-title {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:hover .pcli-title, 
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:focus .pcli-title {
 		background-size: 100% 100%;
 	}
 
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover:hover .pcli-categories {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover:hover .pcli-categories {
 		opacity: .3;
 	}
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:hover .pcli-categories {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:hover .pcli-categories {
 		opacity: .8;
 	}
 
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover .pcli-count::before {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover .pcli-count::before {
 		transition: opacity 0.3s ease-in-out;
 	}
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover:hover .pcli-count::before {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover:hover .pcli-count::before {
 		opacity: .2;
 	}
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:hover .pcli-count::before {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-caption-hover .pcli-item:hover .pcli-count::before {
 		opacity: .9;
 	}
 
 	/* Image hover */
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-image-hover .pcli-image img {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-image-hover .pcli-image img {
 		transform: scale(1.1); 
 		transition: transform .4s ease-in-out;
 	}
-	body:not(.is-mobile) .tt-portfolio-compact-list.pcl-image-hover .pcli-item:hover .pcli-image img {
+	body:not([data-touch]) .tt-portfolio-compact-list.pcl-image-hover .pcli-item:hover .pcli-image img {
 		transform: scale(1); 
 	}
 }
@@ -7922,60 +6378,60 @@ body.tt-posl-verical-on #ball .ball-drag-mouse-down-inner {
 
 /* Make elements light (for better visibility)
 =============================================== */
-body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) {
+body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not([data-menu-state]) #tt-header:not([data-filled]) {
 	color: var(--tt-force-to-light-color);
 }
 
 /* Make logo light */ 
-body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-light {
+body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-light {
 	display: block;
 }
-body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-dark {
+body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-dark {
 	display: none;
 }
 
 /* Make menu items light (for desctop only) */
 @media (min-width: 1025px) {
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-main-menu-list > li > a, 
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-main-menu-list > li > .tt-submenu-trigger > a {
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-main-menu-list > li > a, 
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-main-menu-list > li > .tt-submenu-trigger > a {
 		color: var(--tt-force-to-light-color);
 	}
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-submenu-master > .tt-submenu-trigger > a::after {
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-submenu-master > .tt-submenu-trigger > a::after {
 		background-color: var(--tt-force-to-light-color);
 	}
 }
 
 /* Make mobile menu trigger light */
-body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn-text {
+body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn-text {
 	color: var(--tt-force-to-light-color);
 }
-body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::before, 
-body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::after {
+body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::before, 
+body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on):not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::after {
 	background-color: var(--tt-force-to-light-color);
 }
 
 /* Make header buttons light */
 @media (min-width: 1025px) { 
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-secondary {
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-secondary {
 		background-color: var(--tt-force-to-light-color);
 	}
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-secondary > *, 
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-secondary > *::after{
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-secondary > *, 
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-secondary > *::after{
 		color: #212121;
 	}
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-outline,
-	body.ph-video-on.tt-ph-visible:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-outline {
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-outline,
+	body.ph-video-on[data-ph-visible]:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-outline {
 		box-shadow: inset 0 0 0 2px var(--tt-force-to-light-color);
 	}
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-outline > *, 
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-outline > *::after {
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-outline > *, 
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-outline > *::after {
 		color: var(--tt-force-to-light-color);
 	}
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-link > *, 
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-link > *::after {
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-link > *, 
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-link > *::after {
 		color: var(--tt-force-to-light-color);
 	}
-	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not(.tt-filled) .tt-btn-line {
+	body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) #tt-header:not([data-filled]) .tt-btn-line {
 		background-color: var(--tt-force-to-light-color);
 	}
 }
@@ -8012,59 +6468,59 @@ body.tt-portfolio-slider-on:not(.tt-posl-light-bg-on) .tt-btn-line {
 
 /* If portfolio slider item background is light
 ================================================ */
-body.tt-posl-light-bg-on:not(.tt-m-menu-active) #tt-header:not(.tt-filled) {
+body.tt-posl-light-bg-on:not([data-menu-state]) #tt-header:not([data-filled]) {
 	color: var(--tt-dark-color);
 }
 
 /* Make logo dark */ 
-body.tt-posl-light-bg-on:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-light {
+body.tt-posl-light-bg-on:not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-light {
 	display: none;
 }
-body.tt-posl-light-bg-on:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-logo-dark {
+body.tt-posl-light-bg-on:not([data-menu-state]) #tt-header:not([data-filled]) .tt-logo-dark {
 	display: block;
 }
 
 /* Make menu items dark (for desctop only) */
 @media (min-width: 1025px) {
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-main-menu-list > li > a, 
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-main-menu-list > li > .tt-submenu-trigger > a {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-main-menu-list > li > a, 
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-main-menu-list > li > .tt-submenu-trigger > a {
 		color: var(--tt-dark-color);
 	}
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-submenu-master > .tt-submenu-trigger > a::after {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-submenu-master > .tt-submenu-trigger > a::after {
 		background-color: var(--tt-dark-color);
 	}
 }
 
 /* Make mobile menu trigger dark */
-body.tt-posl-light-bg-on:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn-text {
+body.tt-posl-light-bg-on:not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn-text {
 	color: var(--tt-dark-color);
 }
-body.tt-posl-light-bg-on:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::before, 
-body.tt-posl-light-bg-on:not(.tt-m-menu-active) #tt-header:not(.tt-filled) .tt-m-menu-toggle-btn span::after {
+body.tt-posl-light-bg-on:not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::before, 
+body.tt-posl-light-bg-on:not([data-menu-state]) #tt-header:not([data-filled]) .tt-m-menu-toggle-btn span::after {
 	background-color: var(--tt-dark-color);
 }
 
 /* Make header buttons dark */
 @media (min-width: 1025px) { 
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-secondary {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-secondary {
 		background-color: var(--tt-dark-color);
 	}
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-secondary > *, 
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-secondary > *::after {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-secondary > *, 
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-secondary > *::after {
 		color: var(--tt-light-color);
 	}
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-outline {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-outline {
 		box-shadow: inset 0 0 0 2px var(--tt-dark-color);
 	}
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-outline > *, 
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-outline > *::after {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-outline > *, 
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-outline > *::after {
 		color: var(--tt-dark-color);
 	}
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-link > *, 
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-link > *::after {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-link > *, 
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-link > *::after {
 		color: var(--tt-dark-color);
 	}
-	body.tt-posl-light-bg-on #tt-header:not(.tt-filled) .tt-btn-line {
+	body.tt-posl-light-bg-on #tt-header:not([data-filled]) .tt-btn-line {
 		background-color: var(--tt-dark-color);
 	}
 }
@@ -8342,9 +6798,9 @@ body.tt-posl-light-bg-on #ball .ball-drag-mouse-down-inner {
 }
 .tt-cs-nav-next:not([class*="cursor-arrow-"]),
 .tt-cs-nav-prev:not([class*="cursor-arrow-"]),
-body.is-mobile .tt-cs-nav-next,
-body.is-mobile .tt-cs-nav-prev,
-body.is-mobile .tt-cs-nav-next {
+body[data-touch] .tt-cs-nav-next,
+body[data-touch] .tt-cs-nav-prev,
+body[data-touch] .tt-cs-nav-next {
 	pointer-events: none;
 }
 
@@ -8370,8 +6826,8 @@ body.is-mobile .tt-cs-nav-next {
 }
 .tt-cs-nav-next:not([class*="cursor-arrow-"]) .tt-cs-nav-arrow,
 .tt-cs-nav-prev:not([class*="cursor-arrow-"]) .tt-cs-nav-arrow,
-body.is-mobile .tt-cs-nav-arrow, 
-body.is-mobile .tt-cs-nav-arrow {
+body[data-touch] .tt-cs-nav-arrow, 
+body[data-touch] .tt-cs-nav-arrow {
 	display: flex;
 	pointer-events: initial;
 }
@@ -8672,8 +7128,8 @@ body.is-mobile .tt-cs-nav-arrow {
 }
 
 /* Hide content carousel navigation */
-body:not(.is-mobile) .tt-content-carousel.cc-hide-navigation .tt-cc-nav-prev,
-body:not(.is-mobile) .tt-content-carousel.cc-hide-navigation .tt-cc-nav-next {
+body:not([data-touch]) .tt-content-carousel.cc-hide-navigation .tt-cc-nav-prev,
+body:not([data-touch]) .tt-content-carousel.cc-hide-navigation .tt-cc-nav-next {
 	display: none !important;
 }
 
@@ -8879,7 +7335,7 @@ a.tt-shs-item-inner {
 
 /* Keep scrolling info (for mobile devices only!) 
 ======================= */
-body:not(.is-mobile) .tt-shs-keep-scrolling {
+body:not([data-touch]) .tt-shs-keep-scrolling {
 	display: none;
 }
 .tt-shs-keep-scrolling {
@@ -9225,15 +7681,15 @@ a.tt-npi-category:hover {
 	border-bottom: 1px solid var(--tt-border-color);
 }
 
-body:not(.is-mobile) .tt-avlist-item:hover,
-body:not(.is-mobile) .tt-avlist-item:focus {
+body:not([data-touch]) .tt-avlist-item:hover,
+body:not([data-touch]) .tt-avlist-item:focus {
 	color: var(--tt-dark-color);
 }
-body:not(.is-mobile) .tt-avlist-item:hover *,
-body:not(.is-mobile) .tt-avlist-item:focus * {
+body:not([data-touch]) .tt-avlist-item:hover *,
+body:not([data-touch]) .tt-avlist-item:focus * {
 	opacity: 1;
 }
-body:not(.is-mobile) .tt-avlist-item::before {
+body:not([data-touch]) .tt-avlist-item::before {
 	position: absolute;
 	display: block;
 	content: "";
@@ -9248,11 +7704,11 @@ body:not(.is-mobile) .tt-avlist-item::before {
 	transition: clip-path .3s ease-in-out;
 	will-change: clip-path;
 }
-body:not(.is-mobile) .tt-avlist-item:hover::before {
+body:not([data-touch]) .tt-avlist-item:hover::before {
 	clip-path: inset(0 0);
 }
-body.is-mobile .tt-avlist-item:hover,
-body.is-mobile .tt-avlist-item:focus {
+body[data-touch] .tt-avlist-item:hover,
+body[data-touch] .tt-avlist-item:focus {
 	color: var(--tt-text-color);
 }
 
@@ -9538,7 +7994,7 @@ body.is-mobile .tt-avlist-item:focus {
 		bottom: 15px;
 	}
 }
-.tt-scroll-to-top.tt-stt-active {
+.tt-scroll-to-top[data-active] {
 	opacity: 1;
 	visibility: visible;
 	transform: translate3d(0, 0, 0);

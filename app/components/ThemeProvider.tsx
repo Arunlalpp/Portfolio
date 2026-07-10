@@ -32,7 +32,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const isLightMode = override ?? persistedIsLightMode;
 
     useEffect(() => {
-        document.body.classList.toggle("tt-lightmode-on", isLightMode);
+        document.body.setAttribute("data-theme", isLightMode ? "light" : "dark");
     }, [isLightMode]);
 
     const toggleTheme = () => {

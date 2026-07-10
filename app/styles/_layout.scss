@@ -1,0 +1,289 @@
+/* ----------------------------------------------------------------------------------------- *
+ * Page boxed layout
+/* ----------------------------------------------------------------------------------------- */
+
+.tt-wrap {
+	max-width: 1282px;
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 15px;
+	padding-right: 15px;
+}
+
+/* Adding extra space to the left and right */
+@media (min-width: 992px) and (max-width: 1360px) {
+	.tt-wrap {
+		padding-left: 7vw;
+		padding-right: 7vw;
+	}
+}
+
+/* Nested tt-wrap */
+.tt-wrap .tt-wrap {
+	max-width: 100%;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Body inner
+/* ------------------------------------------------------------- */
+
+#body-inner {
+	position: relative;
+	overflow: hidden;
+	height: 100%;
+	min-height: 100vh;
+	min-height: 100svh;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Content wrap
+/* ------------------------------------------------------------- */
+
+#tt-content-wrap {
+	position: relative;
+	overflow: hidden;
+}
+
+
+/* ------------------------------------------------------------- *
+ * Page content
+/* ------------------------------------------------------------- */
+
+#tt-page-content {
+}
+
+
+/* ------------------------------------------------------------- *
+ * tt-Section
+/* ------------------------------------------------------------- */
+
+.tt-section {
+	position: relative;
+	padding: 80px 0;
+}
+@media (max-width: 768px) {
+	.tt-section {
+		padding-top: 40px;
+		padding-bottom: 40px;
+	}
+}
+
+/* If height-vh classes in use */
+.tt-section[class*="height-vh"] {
+	display: flex;
+	align-items: center;
+	height: 100%;
+}
+
+
+/* tt-section background  
+========================= */
+.tt-section-background {
+	position: absolute;
+	inset: 0;
+	overflow: hidden;
+	z-index: 0;
+}
+.tt-section-background img,
+.tt-section-background video {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: 50% 50%;
+}
+
+/* If image parallax and zoom-in is enabled */
+.tt-section-background .tt-anim-zoomin-wrap,
+.tt-section-background .tt-image-parallax-wrap,
+.tt-section-background .tt-image-parallax-inner {
+	position: absolute;
+	inset: 0;
+}
+
+/* tt-section background grayscale */
+.tt-section-background.tt-sbg-grayscale {
+	filter: grayscale(1);
+}
+
+/* tt-section background cover */
+.tt-section-background[class*="tt-sbg-cover-"]::before {
+	position: absolute;
+	display: block;
+	content: "";
+	top: -1px;
+	left: -1px;
+	bottom: -1px;
+	right: -1px;
+	background-color: #040404;
+	z-index: 1;
+	opacity: 0;
+}
+.tt-section-background.tt-sbg-cover-0::before { opacity: 0; }
+.tt-section-background.tt-sbg-cover-0-5::before { opacity: .05; }
+.tt-section-background.tt-sbg-cover-1::before { opacity: .1; }
+.tt-section-background.tt-sbg-cover-1-5::before { opacity: .15; }
+.tt-section-background.tt-sbg-cover-2::before { opacity: .2; }
+.tt-section-background.tt-sbg-cover-2-5::before { opacity: .25; }
+.tt-section-background.tt-sbg-cover-3::before { opacity: .3; }
+.tt-section-background.tt-sbg-cover-3-5::before { opacity: .35; }
+.tt-section-background.tt-sbg-cover-4::before { opacity: .4; }
+.tt-section-background.tt-sbg-cover-4-5::before { opacity: .45; }
+.tt-section-background.tt-sbg-cover-5::before { opacity: .5; }
+.tt-section-background.tt-sbg-cover-5-5::before { opacity: .55; }
+.tt-section-background.tt-sbg-cover-6::before { opacity: .6; }
+.tt-section-background.tt-sbg-cover-6-5::before { opacity: .65; }
+.tt-section-background.tt-sbg-cover-7::before { opacity: .7; }
+.tt-section-background.tt-sbg-cover-7-5::before { opacity: .75; }
+.tt-section-background.tt-sbg-cover-8::before { opacity: .8; }
+.tt-section-background.tt-sbg-cover-8-5::before { opacity: .85; }
+.tt-section-background.tt-sbg-cover-9::before { opacity: .9; }
+.tt-section-background.tt-sbg-cover-9-5::before { opacity: .95; }
+
+
+/* If class "tt-sbg-on" is enabled on .tt-section
+================================================== */
+.tt-sbg-on:not(.tt-sbg-is-light-on) {
+	background-color: #222;
+	background-image:
+		radial-gradient(circle at 15% 20%, rgb(191 74 26 / 10%), transparent 60%),
+		url(/assets/img/bg-noise.png);
+	background-repeat: no-repeat, repeat;
+	background-size: cover, 180px 180px;
+	color: #FFF;
+}
+
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-text-reveal > span {
+	color: #FFF;
+	-webkit-text-fill-color: rgb(255 255 255 / 30%);
+}
+
+/* Buttons */
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-secondary {
+	background-color: #FFF;
+}
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-secondary > *, 
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-secondary > *::after {
+	color: #212121;
+}
+
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-outline {
+	box-shadow: inset 0 0 0 2px #FFF;
+}
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-outline > *, 
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-outline > *::after {
+	color: #FFF;
+}
+
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-link > *, 
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-link > *::after {
+	color: #FFF;
+}
+
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-btn-line {
+	background-color: #FFF;
+}
+
+.tt-sbg-on:not(.tt-sbg-is-light-on) .tt-big-round-ptn-inner {
+	color: #FFF;
+}
+
+
+/* If class "tt-sbg-is-light" is enabled on .tt-section
+======================================================== */
+.tt-sbg-is-light-on {
+	color: #212121;
+}
+
+.tt-sbg-is-light-on .tt-text-reveal > span {
+	color: #212121;
+	-webkit-text-fill-color: rgb(0 0 0 / 20%);
+}
+
+/* Buttons */
+.tt-sbg-is-light-on .tt-btn-secondary {
+	background-color: #212121;
+}
+.tt-sbg-is-light-on .tt-btn-secondary > *, 
+.tt-sbg-is-light-on .tt-btn-secondary > *::after {
+	color: #FFF;
+}
+
+.tt-sbg-is-light-on .tt-btn-outline {
+	box-shadow: inset 0 0 0 2px #212121;
+}
+.tt-sbg-is-light-on .tt-btn-outline > *, 
+.tt-sbg-is-light-on .tt-btn-outline > *::after {
+	color: #212121;
+}
+
+.tt-sbg-is-light-on .tt-btn-link > *, 
+.tt-sbg-is-light-on .tt-btn-link > *::after {
+	color: #212121;
+}
+
+.tt-sbg-is-light-on .tt-btn-line {
+	background-color: #212121;
+}
+
+.tt-sbg-is-light-on .tt-big-round-ptn-inner {
+	color: #212121;
+}
+
+
+/* tt-section inner 
+==================== */
+.tt-section-inner {
+	position: relative;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+/* ------------------------------------------------------------- *
+ * 404 error
+/* ------------------------------------------------------------- */
+
+.tt-404-error {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	min-height: 100vh;
+	min-height: 100svh;
+	padding: 120px 0;
+}
+.tt-404-error-title {
+	margin: 0;
+	text-transform: uppercase;
+	text-align: center;
+	font-family: var(--tt-alter-font);
+	font-size: clamp(72px, 12vw, 230px);
+	font-weight: bold;
+	font-weight: 700;
+	line-height: 0.95;
+}
+.tt-404-error-subtitle {
+	margin-bottom: 40px;
+	text-transform: uppercase;
+	font-size: calc(15px + 0.1vw);
+	font-weight: 500;
+	letter-spacing: 1px;
+	line-height: 1.2;
+}
+.tt-404-error-description {
+	max-width: 700px;
+	margin-top: 30px;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: normal;
+	line-height: 1.2;
+}
+
+

@@ -41,7 +41,7 @@ function ScrollingTextBand({ band }: { band: Band }) {
         let lastScroll = window.pageYOffset;
         const onScroll = () => {
             const scrollingDown = window.pageYOffset > lastScroll;
-            el.classList.toggle("scrolled-up", !scrollingDown);
+            el.setAttribute("data-direction", scrollingDown ? "down" : "up");
             gsap.to(tween, { timeScale: scrollingDown ? 1 : -1 });
             lastScroll = window.pageYOffset;
         };
@@ -68,7 +68,7 @@ function ScrollingTextBand({ band }: { band: Band }) {
 
 export default function ScrollingBanner() {
     return (
-        <div className="tt-section no-padding padding-top-xlg-40 padding-bottom-xlg-40">
+        <div className="tt-section p-0 xl:pt-[40px] xl:pb-[40px]">
             <div className="tt-section-inner">
                 <div className="tt-scrolling-text-crossed">
                     <div className="tt-scrolling-text-crossed-inner">

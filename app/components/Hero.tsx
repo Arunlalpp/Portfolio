@@ -21,11 +21,17 @@ export default function Hero() {
         const pageHeader = pageHeaderRef.current;
         if (!pageHeader) return;
 
+        const setPhVisible = (visible: boolean) => {
+            document.body.toggleAttribute("data-ph-visible", visible);
+        };
         ScrollTrigger.create({
             trigger: pageHeader,
             start: "top bottom",
             end: "bottom top",
-            toggleClass: { targets: document.body, className: "tt-ph-visible" },
+            onEnter: () => setPhVisible(true),
+            onLeave: () => setPhVisible(false),
+            onEnterBack: () => setPhVisible(true),
+            onLeaveBack: () => setPhVisible(false),
         });
 
         gsap.to(pageHeader.querySelector(".ph-video-inner"), {
@@ -42,7 +48,7 @@ export default function Hero() {
 
         const scrollSocialItems = pageHeader.querySelectorAll(".tt-scroll-down, .ph-social");
         if (pageHeader.offsetHeight > window.innerHeight) {
-            document.body.classList.add("ph-oversized-on");
+            document.body.setAttribute("data-ph-oversized", "");
             gsap.set(scrollSocialItems, { position: "fixed" });
 
             ScrollTrigger.create({
@@ -91,8 +97,8 @@ export default function Hero() {
         window.addEventListener("resize", updateMaskPosition);
 
         const baseCaption = pageHeader.querySelector(".page-header-inner:not(.ph-mask) .ph-caption");
-        const showMask = () => document.body.classList.add("ph-mask-active");
-        const hideMask = () => document.body.classList.remove("ph-mask-active");
+        const showMask = () => document.body.setAttribute("data-mask-active", "");
+        const hideMask = () => document.body.removeAttribute("data-mask-active");
         baseCaption?.addEventListener("mouseover", showMask);
         baseCaption?.addEventListener("mouseleave", hideMask);
 
@@ -124,7 +130,7 @@ export default function Hero() {
                 <div className="ph-caption">
                     <div className="ph-caption-inner">
                         <WordReveal as="h1" className="ph-caption-title">Arun<br /> Lal</WordReveal>
-                        <WordReveal className="ph-caption-description max-width-700">
+                        <WordReveal className="ph-caption-description max-w-[700px]">
                             Software engineer building reliable,<br /> thoughtful products
                         </WordReveal>
                     </div>
@@ -136,7 +142,7 @@ export default function Hero() {
                     <div className="ph-caption">
                         <div className="ph-caption-inner">
                             <WordReveal as="h1" className="ph-caption-title">Software<br /> Engineer</WordReveal>
-                            <WordReveal className="ph-caption-description max-width-700">
+                            <WordReveal className="ph-caption-description max-w-[700px]">
                                 Software engineer building reliable,<br /> thoughtful products
                             </WordReveal>
                         </div>

@@ -22,12 +22,12 @@ function TechStackRow({ item }: { item: TechStackItemData }) {
 export default function TechStack() {
     return (
         <>
-            <div className="tt-section padding-top-xlg-120 no-padding-bottom">
+            <div className="tt-section xl:pt-[120px] pb-0">
                 <div className="tt-section-inner">
                     <div className="tt-heading tt-heading-xxxlg tt-heading-center">
                         <TextReveal as="h3" className="tt-heading-subtitle">Toolbox</TextReveal>
                         <TextReveal as="h2" className="tt-heading-title">Tech Stack</TextReveal>
-                        <TextReveal as="p" className="max-width-500 tt-text-uppercase">
+                        <TextReveal as="p" className="max-w-[500px] uppercase leading-[1.2]">
                             Languages and tools<br /> I reach for most often
                         </TextReveal>
                     </div>

@@ -47,22 +47,22 @@ export default function Projects() {
 
     return (
         <>
-            <div id="projects" className="tt-section padding-top-xlg-140 border-top">
+            <div id="projects" className="tt-section xl:pt-[140px] border-t border-tt-border">
                 <div className="tt-section-inner tt-wrap">
-                    <div className="tt-row">
-                        <div className="tt-col-xl-8">
+                    <div className="grid grid-cols-12 gap-x-[30px]">
+                        <div className="col-span-12 xl:col-span-8">
                             <div className="tt-heading tt-heading-xxxlg">
                                 <TextReveal as="h3" className="tt-heading-subtitle">Featured Work</TextReveal>
                                 <TextReveal as="h2" className="tt-heading-title">Projects</TextReveal>
                             </div>
-                            <TextReveal className="tt-text-uppercase max-width-400 margin-left-xlg-10-p text-pretty">
+                            <TextReveal className="uppercase leading-[1.2] max-w-[400px] xl:ml-[10%] text-pretty">
                                 Please explore my selected projects below.
                             </TextReveal>
                         </div>
 
-                        <div className="tt-col-xl-4 tt-align-self-end margin-top-30">
+                        <div className="col-span-12 xl:col-span-4 self-end mt-7.5">
                             <div ref={githubBtnRef} className="tt-big-round-ptn tt-anim-fadeinup">
-                                <a href="https://github.com/" target="_blank" rel="noopener" className="tt-big-round-ptn-holder tt-magnetic-item">
+                                <a href="https://github.com/Arunlalpp" target="_blank" rel="noopener" className="tt-big-round-ptn-holder tt-magnetic-item">
                                     <div className="tt-big-round-ptn-inner">View<br /> GitHub</div>
                                 </a>
                             </div>
@@ -71,7 +71,7 @@ export default function Projects() {
                 </div>
             </div>
 
-            <div className="tt-section no-padding-top padding-top-xlg-80 padding-bottom-20 padding-bottom-xlg-80">
+            <div className="tt-section pt-0 xl:pt-[80px] pb-5 xl:pb-[80px]">
                 <div className="tt-section-inner">
                     <div ref={previewListRef} className="tt-portfolio-preview-list tt-ppli-portrait tt-ppli-hover">
                         <div className="tt-ppl-items-list">

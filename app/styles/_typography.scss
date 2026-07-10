@@ -1,0 +1,136 @@
+/* ------------------------------------------------------------- *
+ * tt-Headings (custom headings)
+/* ------------------------------------------------------------- */
+
+.tt-heading {
+	position: relative;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 40px;
+	z-index: 9;
+}
+@media (max-width: 991px) {
+	.tt-heading {
+		margin-bottom: 30px;
+	}
+}
+.tt-wrap .tt-heading {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* tt-Headings title */
+.tt-heading-title {
+	margin: 0;
+	text-transform: uppercase;
+	font-family: var(--tt-alter-font);
+	font-size: clamp(32px, 3vw, 42px);
+	font-weight: bold;
+	font-weight: 600;
+	line-height: 1;
+}
+
+/* tt-Headings subtitle */
+.tt-heading-subtitle {
+	margin: 0 0 30px 0;
+	text-transform: uppercase;
+	font-size: calc(15px + 0.1vw);
+	font-weight: bold;
+	font-weight: 600;
+	letter-spacing: 1px;
+	line-height: 1.2;
+}
+.tt-heading-title + .tt-heading-subtitle {
+	margin: 15px 0 0 0 !important;
+}
+
+/* tt-Headings paragraph */
+.tt-heading-title + p,
+.tt-heading-subtitle + p {
+	margin-top: 30px;
+}
+.tt-heading > p:last-child {
+	margin-bottom: 0 !important;
+}
+
+
+/* tt-Headings positions center 
+================================ */
+.tt-heading.tt-heading-center {
+	display: flex;
+	text-align: center;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+
+
+/* tt-Headings sizes 
+===================== */
+/* size xsm */
+.tt-heading.tt-heading-xsm .tt-heading-title {
+	font-size: clamp(24px, 2vw, 26px);
+}
+.tt-heading.tt-heading-xsm .tt-heading-subtitle {
+	font-size: calc(12px + 0.1vw);
+}
+
+/* size sm */
+.tt-heading.tt-heading-sm .tt-heading-title {
+	font-size: clamp(26px, 2vw, 34px);
+}
+.tt-heading.tt-heading-sm .tt-heading-subtitle {
+	font-size: calc(14px + 0.1vw);
+}
+
+/* size lg */
+.tt-heading.tt-heading-lg .tt-heading-title {
+	font-size: clamp(36px, 4vw, 62px);
+}
+.tt-heading.tt-heading-lg .tt-heading-subtitle {
+	margin-bottom: 40px;
+}
+
+/* size xlg */
+.tt-heading.tt-heading-xlg .tt-heading-title {
+	font-size: clamp(52px, 5vw, 82px);
+}
+@media (min-width: 992px) {
+	.tt-heading.tt-heading-xlg .tt-heading-subtitle {
+		margin-bottom: 50px;
+	}
+	.tt-heading.tt-heading-xlg .tt-heading-title + p,
+	.tt-heading.tt-heading-xlg .tt-heading-subtitle + p {
+		margin-top: 30px;
+	}
+}
+
+/* size xxlg */
+.tt-heading.tt-heading-xxlg .tt-heading-title {
+	font-size: clamp(52px, 6vw, 110px);
+}
+@media (min-width: 992px) {
+	.tt-heading.tt-heading-xxlg .tt-heading-subtitle {
+		margin-bottom: 50px;
+	}
+	.tt-heading.tt-heading-xxlg .tt-heading-title + p,
+	.tt-heading.tt-heading-xxlg .tt-heading-subtitle + p {
+		margin-top: 30px;
+	}
+}
+
+/* size xxxlg */
+.tt-heading.tt-heading-xxxlg .tt-heading-title {
+	font-size: clamp(64px, 10vw, 187px);
+}
+@media (min-width: 992px) {
+	.tt-heading.tt-heading-xxxlg .tt-heading-subtitle {
+		margin-bottom: 50px;
+	}
+	.tt-heading.tt-heading-xxxlg .tt-heading-title + p,
+	.tt-heading.tt-heading-xxxlg .tt-heading-subtitle + p {
+		margin-top: 30px;
+	}
+}
+
+

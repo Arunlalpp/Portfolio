@@ -61,12 +61,12 @@ export default function MagicCursor() {
         // Magnetic pull on hover.
         document.querySelectorAll(".tt-magnetic-item").forEach((item) => {
             const onEnter = () => {
-                ball.classList.add("magnetic-active");
+                ball.setAttribute("data-magnetic", "");
                 gsap.to(ball, { duration: 0.3, ...MAGNETIC_SIZE, opacity: 1 });
                 magneticActive = true;
             };
             const onLeave = () => {
-                ball.classList.remove("magnetic-active");
+                ball.removeAttribute("data-magnetic");
                 gsap.to(ball, { duration: 0.3, ...BALL_SIZE });
                 gsap.to(item, { duration: 0.3, x: 0, y: 0, clearProps: "all" });
                 magneticActive = false;

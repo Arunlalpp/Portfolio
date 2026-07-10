@@ -19,13 +19,13 @@ export interface SocialLink {
 }
 
 export const socialLinks: SocialLink[] = [
-    { icon: "fa-brands fa-github", href: "https://github.com/", label: "GitHub" },
+    { icon: "fa-brands fa-github", href: "https://github.com/Arunlalpp", label: "GitHub" },
     { icon: "fa-brands fa-linkedin-in", href: "https://linkedin.com/", label: "LinkedIn" },
-    { icon: "fa-solid fa-envelope", href: "mailto:arunlalpp.softius@gmail.com", label: "Email" },
+    { icon: "fa-solid fa-envelope", href: "mailto:arunlalpp@gmail.com", label: "Email" },
 ];
 
 export const footerSocialLinks: SocialLink[] = [
-    { icon: "fa-brands fa-github", href: "https://github.com/", label: "GitHub" },
+    { icon: "fa-brands fa-github", href: "https://github.com/Arunlalpp", label: "GitHub" },
     { icon: "fa-brands fa-linkedin-in", href: "https://linkedin.com/", label: "LinkedIn" },
     { icon: "fa-brands fa-x-twitter", href: "https://x.com/", label: "X" },
 ];
@@ -38,44 +38,45 @@ export interface Project {
     title: string;
     categories: string[];
     info: string;
+    url: string;
     media: ProjectMedia;
 }
 
 export const projects: Project[] = [
     {
-        title: "Order Platform",
-        categories: ["Backend", "Fintech"],
-        info: "Node.js / PostgreSQL / AWS",
-        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-1.jpg" },
-    },
-    {
-        title: "Realtime Dashboard",
-        categories: ["Frontend"],
-        info: "React / TypeScript / WebSockets",
-        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-2.jpg" },
-    },
-    {
-        title: "Storefront Redesign",
+        title: "Emirates Car Care",
         categories: ["Full Stack"],
-        info: "Next.js / Tailwind / Stripe",
-        media: {
-            type: "video",
-            poster: "/assets/vids/800/video-4-800.jpg",
-            mp4: "/assets/vids/800/video-4-800.mp4",
-            webm: "/assets/vids/800/video-4-800.webm",
-        },
+        info: "Web App / Booking & Auth",
+        url: "https://emirates-car-care.vercel.app/login",
+        media: { type: "image", src: "/assets/img/portfolio/1920/emirates-car-care.jpg" },
     },
     {
-        title: "Internal Tooling",
-        categories: ["DevOps"],
-        info: "Docker / CI-CD / Terraform",
-        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-3.jpg" },
+        title: "OGGI Store Manager",
+        categories: ["Full Stack"],
+        info: "Web App / Store Management",
+        url: "https://employee-managment-swart.vercel.app/login",
+        media: { type: "image", src: "/assets/img/portfolio/1920/oggi-store-manager.jpg" },
     },
     {
-        title: "Mobile Companion App",
-        categories: ["Mobile"],
-        info: "React Native / GraphQL",
-        media: { type: "image", src: "/assets/img/portfolio/1920/portfolio-4.jpg" },
+        title: "Kalyani Kalakriti Foundation",
+        categories: ["Frontend"],
+        info: "Marketing Website",
+        url: "https://kalyani-kalakriti.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/kalyani-kalakriti.jpg" },
+    },
+    {
+        title: "Ikon Formulations",
+        categories: ["Frontend"],
+        info: "Marketing Website / Product Catalog",
+        url: "https://ikon-website-delta.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/ikon-formulations.jpg" },
+    },
+    {
+        title: "Leggett Property Management",
+        categories: ["Frontend"],
+        info: "Marketing Website / Lead Generation",
+        url: "https://leggett-website.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/leggett-property.jpg" },
     },
 ];
 
@@ -86,29 +87,29 @@ export interface Service {
 
 export const services: Service[] = [
     {
-        titleLines: ["Backend", "Development"],
-        description:
-            "Designing reliable APIs and services with a focus on data integrity, performance, and clean architecture that scales with the product.",
-    },
-    {
         titleLines: ["Frontend", "Engineering"],
         description:
-            "Building fast, accessible interfaces with React and TypeScript, translating design intent into interactions that feel effortless.",
+            "Building fast, accessible interfaces with React, Next.js, and Nuxt.js, translating design intent into interactions that feel effortless.",
     },
     {
-        titleLines: ["Cloud &", "DevOps"],
+        titleLines: ["Mobile", "Development"],
         description:
-            "Setting up CI/CD pipelines, containerized deployments, and monitoring so teams can ship confidently and often.",
+            "Crafting cross-platform mobile apps with React Native, sharing logic and UI patterns with the web codebase wherever it makes sense.",
     },
     {
-        titleLines: ["API", "Design"],
+        titleLines: ["UI/UX", "Implementation"],
         description:
-            "Modeling clear, versioned contracts between services, prioritizing consistency and developer experience for every consumer.",
+            "Turning designs into responsive, maintainable UIs with Tailwind CSS and SCSS, layering in animation and micro-interactions that feel polished.",
     },
     {
-        titleLines: ["Product", "Engineering"],
+        titleLines: ["Backend", "& APIs"],
         description:
-            "Partnering closely with product and design to turn ambiguous problems into shipped features that actually solve them.",
+            "Building REST APIs and services with Node.js, Express, and MongoDB, focused on clean data models and predictable contracts.",
+    },
+    {
+        titleLines: ["Cloud &", "Deployment"],
+        description:
+            "Deploying and managing applications on Oracle Cloud VMs, handling server setup, environment configuration, and reliable release workflows.",
     },
 ];
 

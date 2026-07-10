@@ -1,41 +1,3 @@
-/* ---------------------------------------------------------------------------------------
-* Helper CSS
-* 
-* Template:		Jesper - Creative Portfolio Showcase HTML Website Template
-* Author:		Themetorium
-* URL:			https://themetorium.net/
-*
-* You are free to use these extra prepared helper classes to customize your web site.
---------------------------------------------------------------------------------------- */
-
-
-/* Table of Content
-====================
-* Various classes
-* Hiding classes
-* Background image classes
-* Font/text classes
-* Hover classes
-* Width classes
-* Height classes
-* Center align classes
-* Text color classes
-* Link style classes
-* Link color classes
-* Background color classes
-* Rounded classes
-* Borders classes
-* Paddings classes
-* Margin classes
-* Grid system (similar logic to the Bootstrap framework).
-*/
-
-
-
-/* ------------------------------------------------------------- *
- * Various classes
-/* ------------------------------------------------------------- */
-
 /* clear */
 .clear { clear: both !important; display: block !important; }
 .clear::after {
@@ -208,10 +170,10 @@ ul.tt-list > li a {
 }
 
 /* Hiding from mobile device */
-body.is-mobile .hide-from-mobile { display: none !important; }
+body[data-touch] .hide-from-mobile { display: none !important; }
 
 /* Hiding if not mobile device */
-body:not(.is-mobile) .hide-to-mobile { display: none !important; }
+body:not([data-touch]) .hide-to-mobile { display: none !important; }
 
 
 /* ------------------------------------------------------------- *

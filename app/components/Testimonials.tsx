@@ -74,23 +74,23 @@ export default function Testimonials() {
     }, []);
 
     return (
-        <div id="testimonials" className="tt-section tt-sbg-on border-bottom">
+        <div id="testimonials" className="tt-section tt-sbg-on border-b border-tt-border">
             <div className="tt-section-inner tt-wrap">
                 <div className="tt-sticker" ref={stickerRef}>
-                    <div className="tt-row">
-                        <div className="tt-col-lg-4 margin-bottom-40">
+                    <div className="grid grid-cols-12 gap-x-[30px]">
+                        <div className="col-span-12 lg:col-span-4 mb-10">
                             <div className="tt-sticker-sticky tt-sticky-element">
                                 <div className="tt-heading tt-heading-xxlg">
                                     <TextReveal as="h3" className="tt-heading-subtitle">Testimonials</TextReveal>
                                     <TextReveal as="h2" className="tt-heading-title">What<br /> They Say</TextReveal>
-                                    <TextReveal as="p" className="max-width-500 tt-text-uppercase">
+                                    <TextReveal as="p" className="max-w-[500px] uppercase leading-[1.2]">
                                         Sample quotes — swap these for real feedback from people you&apos;ve worked with.
                                     </TextReveal>
                                 </div>
                             </div>
                         </div>
 
-                        <div className="tt-col-lg-8">
+                        <div className="col-span-12 lg:col-span-8">
                             <div className="tt-sticker-scroller">
                                 <div className="tt-sticky-testimonials tt-stte-reversed-colors">
                                     {testimonials.map((testimonial) => (

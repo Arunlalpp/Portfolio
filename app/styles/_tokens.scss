@@ -1,0 +1,53 @@
+:root {
+    /* General */
+    --tt-main-color: #bf4a1a;
+    --tt-dark-color: #121212;
+    --tt-light-color: #efedea;
+
+    --tt-bg-color: #0a0a0a;
+    --tt-text-color: #efedea;
+    --tt-text-muted-color: #8f8f8f;
+    --tt-border-color: rgb(133 133 133 / 50%);
+
+    --tt-linear-text-bg-color: rgb(255 255 255 / 20%);
+
+    /* Fonts */
+    --tt-body-font: var(--font-poppins), "Poppins", sans-serif;
+    --tt-alter-font: "Big Shoulders Display", sans-serif;
+
+    /* Page transition */
+    --tt-page-trans-overlay-bg-color: #161616;
+
+    /* Cursor ball */
+    --tt-ball-border-color: #666;
+    --tt-ball-magnetic-color: var(--tt-main-color);
+    --tt-ball-bg-color: color-mix(in oklab, var(--tt-main-color) 93%, transparent);
+    --tt-ball-color: #fff;
+
+    /* Links */
+    --tt-link-color: #c93b00;
+    --tt-link-hover-color: #f5533a;
+
+    /* Main menu */
+    --tt-sub-menu-bg-color: #252525;
+    --tt-sub-menu-link-color: #bbb9b2;
+    --tt-sub-menu-link-hover-color: #fff;
+
+    /* Force to light color */
+    --tt-force-to-light-color: #f3f3f3;
+}
+
+/* Light theme overrides — dark and light colors are intentionally reversed. */
+[data-theme="light"] {
+    --tt-dark-color: #e5e3dc;
+    --tt-light-color: #212121;
+
+    --tt-bg-color: #e5e3dc;
+    --tt-text-color: #212121;
+    --tt-text-muted-color: #666;
+    --tt-border-color: #666;
+
+    --tt-linear-text-bg-color: rgb(0 0 0 / 20%);
+
+    --tt-ball-border-color: #999;
+}

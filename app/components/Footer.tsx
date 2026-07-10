@@ -9,8 +9,8 @@ export default function Footer() {
     return (
         <footer id="tt-footer" className="border-top">
             <div className="tt-footer-inner tt-wrap">
-                <div className="tt-row">
-                    <div className="tt-col-xl-4 tt-col-sm-6">
+                <div className="grid grid-cols-12 gap-x-[30px]">
+                    <div className="col-span-12 sm:col-span-6 xl:col-span-4">
                         <div className="tt-footer-widget">
                             <h5 className="tt-footer-widget-heading">Sitemap</h5>
                             <ul className="tt-footer-widget-list">
@@ -23,11 +23,11 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="tt-col-xl-4 tt-col-sm-6">
+                    <div className="col-span-12 sm:col-span-6 xl:col-span-4">
                         <div className="tt-footer-widget">
                             <h5 className="tt-footer-widget-heading">Contact</h5>
                             <ul className="tt-footer-widget-list">
-                                <li><a href="mailto:arunlalpp.softius@gmail.com" className="tt-link">arunlalpp.softius@gmail.com</a></li>
+                                <li><a href="mailto:arunlalpp@gmail.com" className="tt-link">arunlalpp@gmail.com</a></li>
                                 <li>
                                     <div className="tt-social-buttons">
                                         <ul>
@@ -45,7 +45,7 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="tt-col-xl-4 tt-col-sm-6 tt-justify-content-xl-end">
+                    <div className="col-span-12 sm:col-span-6 xl:col-span-4 xl:flex xl:justify-end">
                         <div className="tt-footer-widget">
                             <ul className="tt-footer-widget-list">
                                 <li>

@@ -40,7 +40,8 @@ export default function ScrollToTopButton() {
     return (
         <a
             href="#"
-            className={`tt-scroll-to-top${isActive ? " tt-stt-active" : ""}`}
+            className="tt-scroll-to-top"
+            data-active={isActive || undefined}
             onClick={(event) => {
                 event.preventDefault();
                 smoothScrollTo(lenis, isTouchDevice, 0);

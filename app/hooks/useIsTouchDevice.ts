@@ -42,7 +42,7 @@ export function useIsTouchDevice() {
     const isTouchDevice = useSyncExternalStore(subscribe, detectTouchDevice, getServerSnapshot);
 
     useEffect(() => {
-        document.body.classList.toggle("is-mobile", isTouchDevice);
+        document.body.toggleAttribute("data-touch", isTouchDevice);
     }, [isTouchDevice]);
 
     return isTouchDevice;

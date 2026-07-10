@@ -20,13 +20,13 @@ export function useHeaderScroll<T extends HTMLElement>() {
                 const navbarHeight = header!.offsetHeight;
 
                 if (scrollTop > lastScrollTop && scrollTop > navbarHeight) {
-                    header!.classList.add("tt-fly-up");
+                    header!.setAttribute("data-fly-up", "");
                 } else {
                     if (scrollTop + window.innerHeight < document.documentElement.scrollHeight) {
-                        header!.classList.remove("tt-fly-up");
+                        header!.removeAttribute("data-fly-up");
                     }
                     if (header!.classList.contains("tt-header-filled")) {
-                        header!.classList.toggle("tt-filled", scrollTop > DELTA);
+                        header!.toggleAttribute("data-filled", scrollTop > DELTA);
                     }
                 }
                 lastScrollTop = scrollTop;

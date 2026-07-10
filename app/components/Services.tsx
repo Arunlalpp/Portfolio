@@ -41,20 +41,20 @@ export default function Services() {
 
     return (
         <>
-            <div id="services" className="tt-section no-padding-bottom padding-bottom-xlg-80">
+            <div id="services" className="tt-section pb-0 xl:pb-[80px]">
                 <div className="tt-section-inner tt-wrap">
-                    <div className="tt-row">
-                        <div className="tt-col-xl-8">
+                    <div className="grid grid-cols-12 gap-x-[30px]">
+                        <div className="col-span-12 xl:col-span-8">
                             <div className="tt-heading tt-heading-xxxlg">
                                 <TextReveal as="h3" className="tt-heading-subtitle">What I Do</TextReveal>
                                 <TextReveal as="h2" className="tt-heading-title">Services</TextReveal>
                             </div>
-                            <TextReveal className="tt-text-uppercase max-width-400 margin-left-xlg-10-p text-pretty">
-                                Comprehensive engineering services to help ship reliable products.
+                            <TextReveal className="uppercase leading-[1.2] max-w-[400px] xl:ml-[10%] text-pretty">
+                                From pixel-perfect interfaces to full-stack apps, here&apos;s how I can help bring your product to life.
                             </TextReveal>
                         </div>
 
-                        <div className="tt-col-xl-4 tt-align-self-end margin-top-40">
+                        <div className="col-span-12 xl:col-span-4 self-end mt-10">
                             <div ref={arrowRef} className="tt-big-arrow tt-ba-angle-bottom-left tt-anim-fadeinup">
                                 <ArrowIcon />
                             </div>
@@ -68,10 +68,13 @@ export default function Services() {
                     <div ref={setAccordionRefs} className="tt-horizontal-accordion tt-hac-alter-hover tt-anim-fadeinup">
                         {services.map((service, index) => (
                             <div
-                                className={
-                                    "tt-hac-item cursor-alter" +
-                                    (index === 0 && activeIndex !== null ? " inactive" : "") +
-                                    (index !== 0 && activeIndex === index ? " active" : "")
+                                className="tt-hac-item cursor-alter"
+                                data-state={
+                                    index === 0 && activeIndex !== null
+                                        ? "inactive"
+                                        : index !== 0 && activeIndex === index
+                                          ? "active"
+                                          : undefined
                                 }
                                 style={{ width: itemWidth, zIndex: services.length - index }}
                                 onMouseEnter={index !== 0 ? () => setActiveIndex(index) : undefined}

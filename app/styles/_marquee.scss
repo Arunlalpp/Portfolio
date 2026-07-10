@@ -1,0 +1,112 @@
+/* ------------------------------------------------------------- *
+ * Scrolling text
+/* ------------------------------------------------------------- */
+
+.tt-scrolling-text {
+	position: relative;
+	display: flex;
+	padding: 10px 0;
+	text-transform: uppercase;
+	font-family: var(--tt-alter-font);
+	font-size: calc(21px + 5.5vw);
+	line-height: 1;
+	font-weight: bold;
+	font-weight: 600;
+	overflow: hidden;
+}
+
+.tt-scrt-inner {
+	display: flex;
+	width: fit-content;
+	flex: auto;
+	flex-shrink: 0;
+	flex-direction: row;
+}
+.tt-scrt-content {
+	display: inline-flex;
+	align-items: center;
+	flex-shrink: 0;
+	will-change: transform;
+}
+
+/* Scrolling text separator  
+============================ */
+.tt-scrt-separator {
+	display: flex;
+	margin: 0 3vw;
+}
+.tt-scrt-separator > i {
+	font-size: calc(16px + 3vw);
+}
+.tt-scrt-separator > svg {
+	height: calc(20px + 2.5vw);
+	fill: var(--tt-text-color);
+}
+
+/* If class "scrt-dyn-separator" and data attribute "data-opposite-direction" is enabled */
+.tt-scrolling-text.scrt-dyn-separator[data-opposite-direction="true"] .tt-scrt-separator > i,
+.tt-scrolling-text.scrt-dyn-separator[data-opposite-direction="true"] .tt-scrt-separator > svg {
+	transform: rotate(180deg);
+}
+
+/* Dynamic separator */
+.tt-scrolling-text.scrt-dyn-separator .tt-scrt-separator {
+	transform: scaleX(-1); /* You can use "rotate(180deg)" instead */
+	transition: transform .3s;
+}
+.tt-scrolling-text[data-direction="up"].scrt-dyn-separator .tt-scrt-separator {
+	transform: scaleX(1); /* You can use "rotate(0deg)" instead */
+}
+
+
+/* Crossed scrolling text  
+========================== */
+.tt-scrolling-text-crossed {
+	display: block;
+	padding-top: calc(30px + 3vw);
+	padding-bottom: calc(30px + 3vw);
+	overflow: hidden;
+}
+.tt-scrolling-text-crossed-inner {
+	margin-left: -50px;
+	margin-right: -50px;
+}
+.tt-scrolling-text-crossed .tt-scrolling-text {
+	padding: 5px 0;
+	background-color: var(--tt-bg-color);
+}
+
+.bg-white .tt-scrolling-text-crossed .tt-scrolling-text {
+	background-color: #ededed;
+}
+
+.tt-scrolling-text-crossed .tt-scrolling-text {
+	padding: 20px 0;
+}
+.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(1) {
+	transform: translateY(50%) rotate(8deg);
+}
+.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(2) {
+	transform: translateY(-50%) rotate(-8deg);
+}
+@media (max-width: 991px) {
+	.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(1) {
+		transform: translateY(50%) rotate(12deg);
+	}
+	.tt-scrolling-text-crossed .tt-scrolling-text:nth-child(2) {
+		transform: translateY(-50%) rotate(-12deg);
+	}
+}
+
+
+/* Scrolling text reverse colors
+================================= */
+.tt-scrolling-text.scrt-color-reverse {
+	background-color: var(--tt-text-color);
+	color: var(--tt-bg-color);
+}
+.tt-scrolling-text.scrt-color-reverse .tt-scrt-separator > svg {
+	fill: var(--tt-bg-color);
+}
+
+

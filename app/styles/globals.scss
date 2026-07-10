@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import "./tokens";
+
+@theme {
+    --color-tt-main: var(--tt-main-color);
+    --color-tt-dark: var(--tt-dark-color);
+    --color-tt-light: var(--tt-light-color);
+    --color-tt-bg: var(--tt-bg-color);
+    --color-tt-text: var(--tt-text-color);
+    --color-tt-text-muted: var(--tt-text-muted-color);
+    --color-tt-border: var(--tt-border-color);
+    --color-tt-link: var(--tt-link-color);
+    --color-tt-link-hover: var(--tt-link-hover-color);
+    --color-tt-sub-menu-bg: var(--tt-sub-menu-bg-color);
+    --color-tt-sub-menu-link: var(--tt-sub-menu-link-color);
+    --color-tt-sub-menu-link-hover: var(--tt-sub-menu-link-hover-color);
+    --color-tt-force-to-light: var(--tt-force-to-light-color);
+
+    --font-body: var(--tt-body-font);
+    --font-alter: var(--tt-alter-font);
+
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1025px;
+    --breakpoint-2xl: 1200px;
+}
+
+@import "./transitions";
+@import "./cursor";
+@import "./noise";
+@import "./marquee";
+@import "./accordion";
+@import "./sticky";
+@import "./typography";
+@import "./layout";
+@import "./buttons";

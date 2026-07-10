@@ -2,6 +2,7 @@
 
 import { MouseEvent, useEffect } from "react";
 import { useGSAP } from "@gsap/react";
+import clsx from "clsx";
 import { gsap } from "../lib/gsap";
 import { navLinks } from "../data/content";
 import { useTheme } from "./ThemeProvider";
@@ -27,7 +28,7 @@ export default function Header() {
 
     useEffect(() => {
         function updateBreakpoint() {
-            document.body.classList.toggle("tt-m-menu-on", window.matchMedia("(max-width: 1024px)").matches);
+            document.body.toggleAttribute("data-menu-breakpoint", window.matchMedia("(max-width: 1024px)").matches);
         }
         updateBreakpoint();
         window.addEventListener("resize", updateBreakpoint);
@@ -37,22 +38,22 @@ export default function Header() {
     const toggleMobileMenu = contextSafe(() => {
         const body = document.body;
         const menuItems = document.querySelectorAll(".tt-main-menu-content > ul > li");
+        const menuState = body.getAttribute("data-menu-state");
+        const willOpen = menuState !== "open" && menuState !== "opening";
 
-        document.documentElement.classList.toggle("tt-no-scroll");
-        body.classList.toggle("tt-m-menu-open");
-        body.classList.add("tt-m-menu-active");
+        document.documentElement.toggleAttribute("data-scroll-lock");
 
-        body.classList.add("tt-m-menu-toggle-no-click");
-
-        if (body.classList.contains("tt-m-menu-open")) {
+        if (willOpen) {
+            body.setAttribute("data-menu-state", "opening");
             const timeline = gsap.timeline({
-                onComplete: () => body.classList.remove("tt-m-menu-toggle-no-click"),
+                onComplete: () => body.setAttribute("data-menu-state", "open"),
             });
             timeline.to(".tt-main-menu", { duration: 0.4, autoAlpha: 1 });
             timeline.from(menuItems, { duration: 0.4, y: 80, autoAlpha: 0, stagger: 0.05, ease: "power2.out", clearProps: "all" });
         } else {
+            body.setAttribute("data-menu-state", "closing");
             const timeline = gsap.timeline({
-                onComplete: () => body.classList.remove("tt-m-menu-toggle-no-click", "tt-m-menu-active"),
+                onComplete: () => body.setAttribute("data-menu-state", "closed"),
             });
             timeline.to(menuItems, { duration: 0.4, y: -80, autoAlpha: 0, stagger: 0.05, ease: "power2.in" });
             timeline.to(".tt-main-menu", { duration: 0.4, autoAlpha: 0, clearProps: "all" }, "+=0.2");
@@ -61,8 +62,8 @@ export default function Header() {
     });
 
     const closeMobileMenu = contextSafe(() => {
-        document.documentElement.classList.remove("tt-no-scroll");
-        document.body.classList.remove("tt-m-menu-open");
+        document.documentElement.removeAttribute("data-scroll-lock");
+        document.body.setAttribute("data-menu-state", "closed");
         gsap.set([".tt-main-menu", ".tt-main-menu-content > ul > li"], { clearProps: "all" });
     });
 
@@ -83,7 +84,9 @@ export default function Header() {
     const handleNavLinkClick = contextSafe((event: MouseEvent<HTMLAnchorElement>) => {
         scrollToAnchor(event);
         const link = event.currentTarget;
-        if (!isMenuCloseExcluded(link) && document.body.classList.contains("tt-m-menu-open")) {
+        const menuState = document.body.getAttribute("data-menu-state");
+        const isMenuOpen = menuState === "open" || menuState === "opening";
+        if (!isMenuCloseExcluded(link) && isMenuOpen) {
             toggleMobileMenu();
         }
     });
@@ -107,7 +110,7 @@ export default function Header() {
                                 <div className="tt-main-menu-content">
                                     <ul className="tt-main-menu-list">
                                         {navLinks.map((link, index) => (
-                                            <li key={link.href} className={index === 0 ? "active" : undefined}>
+                                            <li key={link.href} className={clsx(index === 0 && "active")}>
                                                 <a href={link.href} onClick={handleNavLinkClick}>{link.label}</a>
                                             </li>
                                         ))}
@@ -129,7 +132,7 @@ export default function Header() {
                         </div>
                     </div>
 
-                    <a href="#contact" className="tt-btn tt-btn-secondary hide-from-xlg tt-magnetic-item" onClick={scrollToAnchor}>
+                    <a href="#contact" className="tt-btn tt-btn-secondary max-xl:hidden tt-magnetic-item" onClick={scrollToAnchor}>
                         <span className="tt-btn-inner"><span data-hover="Contact">Contact</span></span>
                     </a>
 

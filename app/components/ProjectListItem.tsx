@@ -18,7 +18,7 @@ export default function ProjectListItem({ project }: { project: Project }) {
             <div className="tt-ppli-preview">
                 {project.media.type === "image" ? (
                     <div className="tt-ppli-preview-image">
-                        <Image src={project.media.src} alt={project.title} fill sizes="(max-width: 767px) 100vw, 400px" loading="eager" />
+                        <Image src={project.media.src} alt={project.title} fill sizes="(max-width: 767px) 100vw, 400px" />
                     </div>
                 ) : (
                     <div className="tt-ppli-preview-video">

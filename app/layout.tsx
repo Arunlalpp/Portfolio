@@ -15,10 +15,28 @@ const poppins = Poppins({
     display: "swap",
 });
 
+const siteUrl = "https://portfolio-ud9p.vercel.app";
+const siteTitle = "Arun Lal — Software Engineer";
+const siteDescription =
+    "Portfolio of Arun Lal, a software engineer building thoughtful, reliable digital products.";
+
 export const metadata: Metadata = {
-    title: "Arun Lal — Software Engineer",
-    description:
-        "Portfolio of Arun Lal, a software engineer building thoughtful, reliable digital products.",
+    metadataBase: new URL(siteUrl),
+    title: siteTitle,
+    description: siteDescription,
+    openGraph: {
+        title: siteTitle,
+        description: siteDescription,
+        url: siteUrl,
+        siteName: "Arun Lal",
+        type: "website",
+        locale: "en_US",
+    },
+    twitter: {
+        card: "summary_large_image",
+        title: siteTitle,
+        description: siteDescription,
+    },
 };
 
 export default function RootLayout({

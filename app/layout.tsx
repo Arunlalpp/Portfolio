@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import SmoothScrollProvider from "./components/SmoothScrollProvider";
 import { ThemeProvider } from "./components/ThemeProvider";
-import GlobalEffects from "./components/GlobalEffects";
-import MagicCursor from "./components/MagicCursor";
-import PageTransition from "./components/PageTransition";
+import DeferredEffects from "./components/DeferredEffects";
 import "./styles/globals.scss";
 import "./styles/_legacy-helper.scss";
 import "./styles/_legacy-theme.scss";
@@ -64,9 +62,7 @@ export default function RootLayout({
                         <div id="ball" />
                     </div>
 
-                    <GlobalEffects />
-                    <MagicCursor />
-                    <PageTransition />
+                    <DeferredEffects />
                     <ThemeProvider>
                         <SmoothScrollProvider>{children}</SmoothScrollProvider>
                     </ThemeProvider>

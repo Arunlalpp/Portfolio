@@ -78,6 +78,13 @@ export const projects: Project[] = [
         url: "https://leggett-website.vercel.app/",
         media: { type: "image", src: "/assets/img/portfolio/1920/leggett-property.jpg" },
     },
+    {
+        title: "Classic Group",
+        categories: ["Frontend"],
+        info: "Marketing Website / Corporate Site",
+        url: "https://classicgroup.co.in/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/classic-group.jpg" },
+    },
 ];
 
 export interface Service {

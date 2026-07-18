@@ -181,8 +181,8 @@ export default function SketchPlayground() {
                         onPointerUp={handlePointerUp}
                     />
 
-                    <div className="flex flex-wrap items-center justify-center gap-4">
-                        <div className="flex items-center gap-2">
+                    <div className="flex flex-col items-center gap-4 sm:flex-row sm:flex-wrap sm:justify-center">
+                        <div className="flex flex-wrap items-center justify-center gap-2">
                             {COLORS.map((c) => (
                                 <button
                                     key={c}
@@ -204,7 +204,7 @@ export default function SketchPlayground() {
                             />
                         </div>
 
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-wrap items-center justify-center gap-2">
                             {SIZES.map((s) => (
                                 <button
                                     key={s}
@@ -220,24 +220,24 @@ export default function SketchPlayground() {
                             ))}
                         </div>
 
-                        <div className="flex items-center gap-2">
-                            <button type="button" onClick={handleUndo} className="tt-magnetic-item rounded-full border border-tt-border px-4 py-2 text-sm">
+                        <div className="flex flex-wrap items-center justify-center gap-2">
+                            <button type="button" onClick={handleUndo} className="tt-magnetic-item rounded-md border border-tt-border px-4 py-2 text-sm">
                                 Undo
                             </button>
-                            <button type="button" onClick={handleRedo} className="tt-magnetic-item rounded-full border border-tt-border px-4 py-2 text-sm">
+                            <button type="button" onClick={handleRedo} className="tt-magnetic-item rounded-md border border-tt-border px-4 py-2 text-sm">
                                 Redo
                             </button>
-                            <button type="button" onClick={handleClear} className="tt-magnetic-item rounded-full border border-tt-border px-4 py-2 text-sm">
+                            <button type="button" onClick={handleClear} className="tt-magnetic-item rounded-md border border-tt-border px-4 py-2 text-sm">
                                 Clear
                             </button>
-                            <button type="button" onClick={handleDownload} className="tt-magnetic-item rounded-full border border-tt-border px-4 py-2 text-sm">
+                            <button type="button" onClick={handleDownload} className="tt-magnetic-item rounded-md border border-tt-border px-4 py-2 text-sm">
                                 Download
                             </button>
                             <button
                                 type="button"
                                 onClick={handlePublish}
                                 disabled={isPublishing}
-                                className="tt-magnetic-item rounded-full bg-tt-main px-5 py-2 text-sm text-white disabled:opacity-50"
+                                className="tt-magnetic-item rounded-md bg-tt-main px-5 py-2 text-sm text-white disabled:opacity-50"
                             >
                                 {isPublishing ? "Publishing…" : "Publish"}
                             </button>

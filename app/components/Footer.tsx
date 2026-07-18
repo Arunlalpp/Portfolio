@@ -27,7 +27,7 @@ export default function Footer() {
                         <div className="tt-footer-widget">
                             <h5 className="tt-footer-widget-heading">Contact</h5>
                             <ul className="tt-footer-widget-list">
-                                <li><a href="mailto:arunlalpp@gmail.com" className="tt-link">arunlalpp@gmail.com</a></li>
+                                <li><a href="mailto:arunlalpp@gmail.com" className="tt-link">ARUNLALPP@GMAIL.COM</a></li>
                                 <li>
                                     <div className="tt-social-buttons">
                                         <ul>

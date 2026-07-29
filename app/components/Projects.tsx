@@ -24,14 +24,25 @@ export default function Projects() {
         function onMouseMove(event: MouseEvent) {
             xTo(event.clientX);
             yTo(event.clientY);
+            gsap.set(previews!, { clearProps: "opacity,visibility" });
+        }
+
+        // The preview's position only updates on real mousemove, but the browser
+        // re-evaluates :hover (which reveals it) as rows scroll past a stationary
+        // cursor, so it can pop up "stuck" mid-scroll. Hide it until the next
+        // genuine mouse movement confirms the user is actually hovering.
+        function onScroll() {
+            gsap.set(previews!, { autoAlpha: 0 });
         }
 
         function updateFollowState() {
             if (window.innerWidth >= PREVIEW_FOLLOW_BREAKPOINT) {
                 gsap.set(previews!, { xPercent: -50, yPercent: -50 });
                 window.addEventListener("mousemove", onMouseMove);
+                window.addEventListener("scroll", onScroll, { passive: true });
             } else {
                 window.removeEventListener("mousemove", onMouseMove);
+                window.removeEventListener("scroll", onScroll);
                 gsap.set(previews!, { clearProps: "all" });
             }
         }
@@ -41,6 +52,7 @@ export default function Projects() {
 
         return () => {
             window.removeEventListener("mousemove", onMouseMove);
+            window.removeEventListener("scroll", onScroll);
             window.removeEventListener("resize", updateFollowState);
         };
     }, []);

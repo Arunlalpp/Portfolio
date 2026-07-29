@@ -247,19 +247,33 @@ export default function SketchPlayground() {
                     </div>
 
                     {sketches.length > 0 && (
-                        <div className="mt-6 w-full">
-                            <div className="mb-3 text-center text-xs uppercase tracking-wide text-tt-text-muted">
-                                Visitor&apos;s Sketches
+                        <div className="mt-10 w-full">
+                            <div className="mb-5 flex items-center justify-center gap-3">
+                                <span className="h-px w-8 bg-tt-border" />
+                                <span className="text-xs uppercase tracking-wide text-tt-text-muted">
+                                    Visitor&apos;s Sketches · {sketches.length}
+                                </span>
+                                <span className="h-px w-8 bg-tt-border" />
                             </div>
-                            <div className="flex gap-3 overflow-x-auto pb-2">
-                                {sketches.map((sketch) => (
-                                    // eslint-disable-next-line @next/next/no-img-element -- data URLs can't go through next/image
-                                    <img
+
+                            <div className="grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 md:grid-cols-6">
+                                {sketches.map((sketch, index) => (
+                                    <div
                                         key={sketch.id}
-                                        src={sketch.image_data}
-                                        alt="Visitor sketch"
-                                        className="h-20 w-32 flex-none rounded-md border border-tt-border bg-tt-bg object-cover"
-                                    />
+                                        className="group relative aspect-square overflow-hidden rounded-xl border border-tt-border bg-tt-bg transition-colors duration-300 hover:border-tt-main"
+                                    >
+                                        {/* eslint-disable-next-line @next/next/no-img-element -- data URLs can't go through next/image */}
+                                        <img
+                                            src={sketch.image_data}
+                                            alt="Visitor sketch"
+                                            className="h-full w-full object-cover transition-transform duration-300 ease-out group-hover:scale-110"
+                                        />
+                                        {index === 0 && (
+                                            <span className="absolute left-2 top-2 rounded-full bg-tt-main px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide text-white">
+                                                New
+                                            </span>
+                                        )}
+                                    </div>
                                 ))}
                             </div>
                         </div>

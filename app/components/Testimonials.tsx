@@ -30,7 +30,20 @@ export default function Testimonials() {
             cards.forEach((card) => { card.style.height = `${maxHeight}px`; });
         }
         setEqualCardHeight();
-        window.addEventListener("resize", setEqualCardHeight);
+
+        // Throttle to one measure/write pass per frame, since resize fires
+        // repeatedly (e.g. on mobile as the browser chrome shows/hides while
+        // scrolling), and each pass forces a synchronous layout.
+        let resizeTicking = false;
+        function onResize() {
+            if (resizeTicking) return;
+            resizeTicking = true;
+            requestAnimationFrame(() => {
+                setEqualCardHeight();
+                resizeTicking = false;
+            });
+        }
+        window.addEventListener("resize", onResize);
 
         const mm = gsap.matchMedia();
 
@@ -68,7 +81,7 @@ export default function Testimonials() {
         });
 
         return () => {
-            window.removeEventListener("resize", setEqualCardHeight);
+            window.removeEventListener("resize", onResize);
             mm.revert();
         };
     }, []);

@@ -45,7 +45,7 @@ function ScrollingTextBand({ band }: { band: Band }) {
             gsap.to(tween, { timeScale: scrollingDown ? 1 : -1 });
             lastScroll = window.pageYOffset;
         };
-        window.addEventListener("scroll", onScroll);
+        window.addEventListener("scroll", onScroll, { passive: true });
 
         return () => window.removeEventListener("scroll", onScroll);
     }, [band.opposite]);

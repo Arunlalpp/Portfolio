@@ -20,7 +20,20 @@ export function useFadeInUp<T extends HTMLElement>() {
         const timeline = gsap.timeline({
             scrollTrigger: { trigger: el, start: "top bottom" },
         });
-        timeline.from(el, { duration: 2, autoAlpha: 0, y: 50, ease: "expo.out", clearProps: "all" }, `+=${delay}`);
+        timeline.from(
+            el,
+            {
+                duration: 2,
+                autoAlpha: 0,
+                y: 50,
+                ease: "expo.out",
+                clearProps: "all",
+                onComplete: () => {
+                    el.style.willChange = "";
+                },
+            },
+            `+=${delay}`,
+        );
     }, []);
 
     return ref;

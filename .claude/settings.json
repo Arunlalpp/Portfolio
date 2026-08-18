@@ -2,7 +2,15 @@
   "permissions": {
     "allow": [
       "mcp__claude_ai_Supabase__get_cost",
-      "mcp__claude_ai_Supabase__apply_migration"
+      "mcp__claude_ai_Supabase__apply_migration",
+      "Bash(python3 -c ' *)",
+      "Bash(echo \"=== maillard-web README ===\"; cat \"/home/pcp/Documents/maillard-web/README.md\" 2>&1 | head -40 *)",
+      "Read(//home/pcp/Documents/maillard-web/**)",
+      "Bash(echo \"=== dental-clinic-pwa README ===\"; cat \"/home/pcp/Documents/PWA-app/dental-clinic-pwa/README.md\" 2>&1 | head -40 *)",
+      "Read(//home/pcp/Documents/PWA-app/dental-clinic-pwa/**)",
+      "Bash(echo \"=== oggi-fashion README ===\"; cat \"/home/pcp/Documents/Clients/oggi-fashion/README.md\" 2>&1 | head -40 *)",
+      "Read(//home/pcp/Documents/Clients/oggi-fashion/**)",
+      "Read(//home/pcp/Documents/Clients/oggi-fashion/app/**)"
     ]
   }
 }

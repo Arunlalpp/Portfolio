@@ -44,6 +44,41 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        title: "Maillard",
+        categories: ["Frontend"],
+        info: "Marketing Website / Scroll-Driven Video Landing Page",
+        url: "https://maillard-web.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/maillard-web.jpg" },
+    },
+    {
+        title: "Carewell Dental Experts",
+        categories: ["Frontend"],
+        info: "Marketing Website / Clinic Booking Site",
+        url: "https://dental-clinic-website-v7t7.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/carewell-dental-experts.jpg" },
+    },
+    {
+        title: "OGGI Fashion",
+        categories: ["Frontend"],
+        info: "Marketing Website / Menswear Brand",
+        url: "https://oggi-fashion.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/oggi-fashion.jpg" },
+    },
+    {
+        title: "Happenstance Sandal",
+        categories: ["Frontend"],
+        info: "Product Landing Page / 3D Exploded View",
+        url: "https://happenstance-sandal.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/happenstance-sandal.jpg" },
+    },
+    {
+        title: "Happenstance Sandal — Studio",
+        categories: ["Frontend"],
+        info: "Product Landing Page / Studio Photography",
+        url: "https://happenstance-sandal-html.vercel.app/",
+        media: { type: "image", src: "/assets/img/portfolio/1920/happenstance-sandal-html.jpg" },
+    },
+    {
         title: "Emirates Car Care",
         categories: ["Full Stack"],
         info: "Web App / Booking & Auth",

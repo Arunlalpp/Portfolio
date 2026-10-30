@@ -1,6 +1,6 @@
 export const contactEmail = "arunlalpp@gmail.com";
 
-// Flip `open` to false once you've accepted an offer to hide the badge.
+// Flip `open` to false once you've accepted an offer to hide the "open to work" sticker.
 export const availability = {
     open: true,
     label: "Open to new roles",

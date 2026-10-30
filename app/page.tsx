@@ -12,6 +12,7 @@ import PlaygroundGames from "./components/PlaygroundGames";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import OpenToWorkSticker from "./components/OpenToWorkSticker";
 import { getApprovedTestimonials } from "./lib/testimonials";
 
 // Re-render at most once a minute so newly approved testimonials show up.
@@ -42,6 +43,7 @@ export default async function Home() {
 
                 <Footer />
                 <ScrollToTopButton />
+                <OpenToWorkSticker />
             </div>
         </>
     );

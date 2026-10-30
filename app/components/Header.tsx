@@ -132,9 +132,12 @@ export default function Header() {
                         </div>
                     </div>
 
-                    <a href="#contact" className="tt-btn tt-btn-secondary max-xl:hidden tt-magnetic-item" onClick={scrollToAnchor}>
-                        <span className="tt-btn-inner"><span data-hover="Contact">Contact</span></span>
-                    </a>
+                    {/* Hidden via a wrapper: the legacy .tt-btn display rule overrides Tailwind's `hidden`. */}
+                    <div className="max-xl:hidden">
+                        <a href="#contact" className="tt-btn tt-btn-secondary tt-magnetic-item" onClick={scrollToAnchor}>
+                            <span className="tt-btn-inner"><span data-hover="Contact">Contact</span></span>
+                        </a>
+                    </div>
 
                     <div className="tt-style-switch" onClick={toggleTheme} role="button" aria-pressed={isLightMode} aria-label="Toggle light/dark theme">
                         <div className="tt-style-switch-inner tt-magnetic-item">

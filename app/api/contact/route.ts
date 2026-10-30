@@ -1,5 +1,5 @@
 import { supabase } from "../../lib/supabase";
-import { contactEmail } from "../../data/content";
+import { sendNotification, EMAIL_PATTERN } from "../../lib/email";
 
 interface ContactPayload {
     name: string;
@@ -7,8 +7,6 @@ interface ContactPayload {
     company: string | null;
     message: string;
 }
-
-const EMAIL_PATTERN = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
 function parsePayload(body: unknown): ContactPayload | string {
     if (typeof body !== "object" || body === null) return "Invalid request.";
@@ -34,39 +32,18 @@ async function saveMessage(payload: ContactPayload) {
     return !error;
 }
 
-async function sendEmail(payload: ContactPayload) {
-    const apiKey = process.env.RESEND_API_KEY;
-    if (!apiKey) {
-        console.warn("[contact] RESEND_API_KEY is not set; skipping email notification.");
-        return false;
-    }
-
-    let response: Response;
-    try {
-        response = await fetch("https://api.resend.com/emails", {
-            method: "POST",
-            headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-            body: JSON.stringify({
-                from: process.env.CONTACT_FROM_EMAIL || "Portfolio Contact <onboarding@resend.dev>",
-                to: [process.env.CONTACT_TO_EMAIL || contactEmail],
-                reply_to: payload.email,
-                subject: `Portfolio message from ${payload.name}${payload.company ? ` (${payload.company})` : ""}`,
-                text: [
-                    `Name: ${payload.name}`,
-                    `Email: ${payload.email}`,
-                    `Company / Role: ${payload.company ?? "—"}`,
-                    "",
-                    payload.message,
-                ].join("\n"),
-            }),
-        });
-    } catch (error) {
-        console.error("[contact] Failed to reach email service:", error);
-        return false;
-    }
-
-    if (!response.ok) console.error("[contact] Failed to send email:", response.status, await response.text());
-    return response.ok;
+function sendEmail(payload: ContactPayload) {
+    return sendNotification({
+        subject: `Portfolio message from ${payload.name}${payload.company ? ` (${payload.company})` : ""}`,
+        replyTo: payload.email,
+        text: [
+            `Name: ${payload.name}`,
+            `Email: ${payload.email}`,
+            `Company / Role: ${payload.company ?? "—"}`,
+            "",
+            payload.message,
+        ].join("\n"),
+    });
 }
 
 export async function POST(request: Request) {

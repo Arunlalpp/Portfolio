@@ -1,0 +1,30 @@
+/* ------------------------------------------------------------- *
+ * Forms (contact + testimonial)
+ * The legacy theme styles bare `label` elements; reset them inside
+ * our forms so the Tailwind layout classes take effect.
+/* ------------------------------------------------------------- */
+
+.tt-form label {
+	display: flex;
+	margin-bottom: 0;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+.tt-form .tt-btn {
+	margin: 0;
+}
+
+.tt-form .tt-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+/* Honeypot field: off-screen for people, still present for bots. */
+.tt-form .tt-form-trap {
+	position: absolute;
+	left: -10000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}

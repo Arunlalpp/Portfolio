@@ -12,8 +12,14 @@ import PlaygroundGames from "./components/PlaygroundGames";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import { getApprovedTestimonials } from "./lib/testimonials";
 
-export default function Home() {
+// Re-render at most once a minute so newly approved testimonials show up.
+export const revalidate = 60;
+
+export default async function Home() {
+    const testimonials = await getApprovedTestimonials();
+
     return (
         <>
             <Header />
@@ -27,7 +33,7 @@ export default function Home() {
                     <Projects />
                     <ScrollingBanner />
                     <Services />
-                    <Testimonials />
+                    <Testimonials testimonials={testimonials} />
                     <TechStack />
                     <SketchPlayground />
                     <PlaygroundGames />

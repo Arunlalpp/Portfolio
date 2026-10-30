@@ -164,29 +164,6 @@ export const services: Service[] = [
     },
 ];
 
-export interface Testimonial {
-    quote: string;
-    author: string;
-}
-
-export const testimonials: Testimonial[] = [
-    {
-        quote:
-            "Arun consistently turns vague requirements into clean, well-tested systems. He communicates trade-offs clearly and ships on time.",
-        author: "Placeholder — Engineering Manager",
-    },
-    {
-        quote:
-            "One of the most reliable engineers I've worked with — thorough code reviews, sensible architecture calls, and no drama.",
-        author: "Placeholder — Product Lead",
-    },
-    {
-        quote:
-            "Great at picking up ambiguous problems and driving them to a working solution without losing sight of maintainability.",
-        author: "Placeholder — Colleague",
-    },
-];
-
 export interface TechStackItem {
     name: string;
     category: string;

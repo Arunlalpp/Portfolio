@@ -5,7 +5,7 @@ import { contactEmail } from "../data/content";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
-const inputClassName =
+export const inputClassName =
     "w-full rounded-md border border-tt-border bg-transparent px-4 py-3 text-base text-tt-text placeholder:text-tt-text-muted focus:border-tt-main focus:outline-none";
 
 export default function ContactForm() {
@@ -52,22 +52,18 @@ export default function ContactForm() {
 
     if (status === "sent") {
         return (
-            <div role="status" className="rounded-lg border border-tt-border p-8">
+            <div role="status" className="tt-form rounded-lg border border-tt-border p-8">
                 <p className="text-[clamp(22px,2vw,32px)] font-medium leading-[1.2]">Thanks — your message is in.</p>
                 <p className="mt-3 text-tt-text-muted">I usually reply within a day or two.</p>
-                <button
-                    type="button"
-                    onClick={() => setStatus("idle")}
-                    className="tt-magnetic-item mt-6 rounded-md border border-tt-border px-4 py-2 text-sm"
-                >
-                    Send another
+                <button type="button" onClick={() => setStatus("idle")} className="tt-btn tt-btn-outline tt-magnetic-item mt-6">
+                    <span className="tt-btn-inner"><span data-hover="Send Another">Send Another</span></span>
                 </button>
             </div>
         );
     }
 
     return (
-        <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2" noValidate={false}>
+        <form onSubmit={handleSubmit} className="tt-form grid gap-4 sm:grid-cols-2">
             <label className="flex flex-col gap-2">
                 <span className="text-sm uppercase text-tt-text-muted">Name *</span>
                 <input name="name" required maxLength={120} autoComplete="name" className={inputClassName} />
@@ -85,18 +81,18 @@ export default function ContactForm() {
                 <textarea name="message" required minLength={10} maxLength={5000} rows={5} className={inputClassName} />
             </label>
 
-            <label className="hidden" aria-hidden="true">
+            <label className="tt-form-trap" aria-hidden="true">
                 Website
                 <input name="website" tabIndex={-1} autoComplete="off" />
             </label>
 
             <div className="flex flex-wrap items-center gap-4 sm:col-span-2">
-                <button
-                    type="submit"
-                    disabled={status === "sending"}
-                    className="tt-magnetic-item rounded-md bg-tt-main px-6 py-3 text-sm uppercase text-white disabled:opacity-50"
-                >
-                    {status === "sending" ? "Sending…" : "Send Message"}
+                <button type="submit" disabled={status === "sending"} className="tt-btn tt-btn-primary tt-magnetic-item">
+                    <span className="tt-btn-inner">
+                        <span data-hover={status === "sending" ? "Sending…" : "Send Message"}>
+                            {status === "sending" ? "Sending…" : "Send Message"}
+                        </span>
+                    </span>
                 </button>
                 {status === "error" && (
                     <p role="alert" className="text-sm text-tt-link-hover">{errorMessage}</p>

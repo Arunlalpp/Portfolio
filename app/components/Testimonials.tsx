@@ -4,7 +4,8 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "../lib/gsap";
 import TextReveal from "./TextReveal";
-import { testimonials } from "../data/content";
+import TestimonialForm from "./TestimonialForm";
+import type { Testimonial } from "../lib/testimonials";
 
 function getStickyOffset(fallback: number) {
     const header = document.getElementById("tt-header");
@@ -16,7 +17,7 @@ function getStickyOffset(fallback: number) {
     return fallback;
 }
 
-export default function Testimonials() {
+export default function Testimonials({ testimonials }: { testimonials: Testimonial[] }) {
     const stickerRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
@@ -24,6 +25,8 @@ export default function Testimonials() {
         if (!sticker) return;
 
         const cards = Array.from(sticker.querySelectorAll<HTMLElement>(".tt-stte-card"));
+        if (cards.length === 0) return;
+
         function setEqualCardHeight() {
             cards.forEach((card) => { card.style.height = "auto"; });
             const maxHeight = Math.max(...cards.map((card) => card.offsetHeight));
@@ -84,7 +87,7 @@ export default function Testimonials() {
             window.removeEventListener("resize", onResize);
             mm.revert();
         };
-    }, []);
+    }, { dependencies: [testimonials.length] });
 
     return (
         <div id="testimonials" className="tt-section tt-sbg-on border-b border-tt-border">
@@ -97,7 +100,9 @@ export default function Testimonials() {
                                     <TextReveal as="h3" className="tt-heading-subtitle">Testimonials</TextReveal>
                                     <TextReveal as="h2" className="tt-heading-title">What<br /> They Say</TextReveal>
                                     <TextReveal as="p" className="max-w-[500px] uppercase leading-[1.2]">
-                                        Sample quotes — swap these for real feedback from people you&apos;ve worked with.
+                                        {testimonials.length > 0
+                                            ? "Words from people I\u2019ve worked with"
+                                            : "Worked with me? I\u2019d love to hear from you"}
                                     </TextReveal>
                                 </div>
                             </div>
@@ -107,12 +112,12 @@ export default function Testimonials() {
                             <div className="tt-sticker-scroller">
                                 <div className="tt-sticky-testimonials tt-stte-reversed-colors">
                                     {testimonials.map((testimonial) => (
-                                        <div className="tt-stte-item" key={testimonial.author}>
+                                        <div className="tt-stte-item" key={testimonial.id}>
                                             <div className="tt-stte-card cursor-alter">
                                                 <div className="tt-stte-card-counter" />
                                                 <div className="tt-stte-card-caption">
                                                     <div className="tt-stte-text">&ldquo;{testimonial.quote}&rdquo;</div>
-                                                    <div className="tt-stte-subtext">{testimonial.author}</div>
+                                                    <div className="tt-stte-subtext">{testimonial.name} — {testimonial.role}</div>
                                                 </div>
                                             </div>
                                         </div>
@@ -120,6 +125,12 @@ export default function Testimonials() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-12 gap-x-[30px] pb-[80px]">
+                    <div className="col-span-12 lg:col-span-8 lg:col-start-5">
+                        <TestimonialForm />
                     </div>
                 </div>
             </div>

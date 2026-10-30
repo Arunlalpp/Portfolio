@@ -17,7 +17,7 @@ export default function About() {
                             <TextReveal as="h2" className="tt-heading-title">About Me</TextReveal>
                         </div>
                         <TextReveal className="uppercase leading-[1.2] mt-7.5">
-                            Software engineer<br /> based in India
+                            Full stack developer<br /> based in Kerala, India
                         </TextReveal>
                     </div>
 
@@ -25,8 +25,9 @@ export default function About() {
 
                     <div className="col-span-12 lg:col-span-7 self-center">
                         <TextReveal className="text-[clamp(28px,3vw,48px)] leading-[1.2] font-medium">
-                            I am dedicated to building reliable systems and thoughtful interfaces
-                            that meet real user needs and hold up well after ship day.
+                            I&apos;m a developer with 4+ years of experience building web and mobile
+                            apps with React, Next, Vue, Nuxt, and React Native, turning requirements
+                            into responsive, reusable, production-ready interfaces.
                         </TextReveal>
 
                         <a ref={ctaRef} href="#contact" className="tt-btn tt-btn-outline mt-10 tt-magnetic-item tt-anim-fadeinup" onClick={scrollToAnchor}>

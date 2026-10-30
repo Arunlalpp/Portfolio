@@ -3,7 +3,7 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "../lib/gsap";
-import { socialLinks } from "../data/content";
+import { socialLinks, availability } from "../data/content";
 import { useScrollToAnchor } from "../hooks/useScrollToAnchor";
 import { useDeferredVideoSrc } from "../hooks/useDeferredVideoSrc";
 import { useIsTouchDevice } from "../hooks/useIsTouchDevice";
@@ -129,9 +129,22 @@ export default function Hero() {
             <div className="page-header-inner tt-wrap">
                 <div className="ph-caption">
                     <div className="ph-caption-inner">
+                        {availability.open && (
+                            <a
+                                href="#contact"
+                                onClick={scrollToAnchor}
+                                className="tt-magnetic-item mb-6 inline-flex items-center gap-2.5 rounded-full border border-tt-border bg-tt-bg/40 px-4 py-2 text-xs uppercase tracking-wider backdrop-blur-sm"
+                            >
+                                <span className="relative flex size-2.5">
+                                    <span className="absolute inline-flex size-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                                    <span className="relative inline-flex size-2.5 rounded-full bg-emerald-500" />
+                                </span>
+                                {availability.label}
+                            </a>
+                        )}
                         <WordReveal as="h1" className="ph-caption-title">Arun<br /> Lal</WordReveal>
                         <WordReveal className="ph-caption-description max-w-[700px]">
-                            Software engineer building reliable,<br /> thoughtful products
+                            Full stack developer building fast,<br /> responsive web &amp; mobile apps
                         </WordReveal>
                     </div>
                 </div>
@@ -141,9 +154,9 @@ export default function Hero() {
                 <div className="ph-mask-inner tt-wrap">
                     <div className="ph-caption">
                         <div className="ph-caption-inner">
-                            <WordReveal as="h1" className="ph-caption-title">Software<br /> Engineer</WordReveal>
+                            <WordReveal as="h1" className="ph-caption-title">Full Stack<br /> Developer</WordReveal>
                             <WordReveal className="ph-caption-description max-w-[700px]">
-                                Software engineer building reliable,<br /> thoughtful products
+                                Full stack developer building fast,<br /> responsive web &amp; mobile apps
                             </WordReveal>
                         </div>
                     </div>

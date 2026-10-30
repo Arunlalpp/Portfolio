@@ -1,6 +1,7 @@
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import About from "./components/About";
+import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import ScrollingBanner from "./components/ScrollingBanner";
 import Services from "./components/Services";
@@ -22,6 +23,7 @@ export default function Home() {
 
                 <div id="tt-page-content">
                     <About />
+                    <Experience />
                     <Projects />
                     <ScrollingBanner />
                     <Services />

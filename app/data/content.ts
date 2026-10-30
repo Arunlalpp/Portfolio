@@ -1,3 +1,11 @@
+export const contactEmail = "arunlalpp@gmail.com";
+
+// Flip `open` to false once you've accepted an offer to hide the badge.
+export const availability = {
+    open: true,
+    label: "Open to new roles",
+};
+
 export interface NavLink {
     label: string;
     href: string;
@@ -6,6 +14,7 @@ export interface NavLink {
 export const navLinks: NavLink[] = [
     { label: "Home", href: "#" },
     { label: "About", href: "#about" },
+    { label: "Experience", href: "#experience" },
     { label: "Projects", href: "#projects" },
     { label: "Services", href: "#services" },
     { label: "Testimonials", href: "#testimonials" },
@@ -21,7 +30,7 @@ export interface SocialLink {
 export const socialLinks: SocialLink[] = [
     { icon: "fa-brands fa-github", href: "https://github.com/Arunlalpp", label: "GitHub" },
     { icon: "fa-brands fa-linkedin-in", href: "https://linkedin.com/", label: "LinkedIn" },
-    { icon: "fa-solid fa-envelope", href: "mailto:arunlalpp@gmail.com", label: "Email" },
+    { icon: "fa-solid fa-envelope", href: `mailto:${contactEmail}`, label: "Email" },
 ];
 
 export const footerSocialLinks: SocialLink[] = [
@@ -131,27 +140,27 @@ export const services: Service[] = [
     {
         titleLines: ["Frontend", "Engineering"],
         description:
-            "Building fast, accessible interfaces with React, Next.js, and Nuxt.js, translating design intent into interactions that feel effortless.",
+            "Building fast, responsive web apps with React, Next.js, Vue, and Nuxt, structured around reusable components that stay easy to maintain.",
     },
     {
         titleLines: ["Mobile", "Development"],
         description:
-            "Crafting cross-platform mobile apps with React Native, sharing logic and UI patterns with the web codebase wherever it makes sense.",
+            "Developing cross-platform mobile apps with React Native, sharing logic and UI patterns with the web codebase wherever it makes sense.",
     },
     {
         titleLines: ["UI/UX", "Implementation"],
         description:
-            "Turning designs into responsive, maintainable UIs with Tailwind CSS and SCSS, layering in animation and micro-interactions that feel polished.",
+            "Turning designs into pixel-accurate, responsive interfaces with HTML, CSS, SCSS, and Tailwind CSS, layered with interactive, polished user experiences.",
     },
     {
-        titleLines: ["Backend", "& APIs"],
+        titleLines: ["APIs &", "Integration"],
         description:
-            "Building REST APIs and services with Node.js, Express, and MongoDB, focused on clean data models and predictable contracts.",
+            "Connecting frontends to backend services and building server-side features with PHP and Laravel, with clean, predictable data flow between the two.",
     },
     {
-        titleLines: ["Cloud &", "Deployment"],
+        titleLines: ["Debugging", "& Testing"],
         description:
-            "Deploying and managing applications on Oracle Cloud VMs, handling server setup, environment configuration, and reliable release workflows.",
+            "Tracking down bugs, testing features end to end, and working closely with teammates to turn requirements into production-ready software.",
     },
 ];
 
@@ -185,10 +194,63 @@ export interface TechStackItem {
 }
 
 export const techStack: TechStackItem[] = [
-    { name: "TypeScript", category: "Languages", experience: "5+ years" },
-    { name: "React / Next.js", category: "Frontend", experience: "5+ years" },
-    { name: "Node.js", category: "Backend", experience: "5+ years" },
-    { name: "PostgreSQL", category: "Databases", experience: "4+ years" },
-    { name: "AWS", category: "Cloud", experience: "3+ years" },
-    { name: "Docker", category: "DevOps", experience: "3+ years" },
+    { name: "JavaScript / TypeScript", category: "Languages", experience: "4+ years" },
+    { name: "React JS / Next JS", category: "Frontend", experience: "Since 2022" },
+    { name: "Vue JS / Nuxt JS", category: "Frontend", experience: "Since 2024" },
+    { name: "React Native", category: "Mobile", experience: "Since 2022" },
+    { name: "HTML / CSS / SCSS / Tailwind", category: "UI", experience: "4+ years" },
+    { name: "PHP / Laravel", category: "Backend", experience: "Since 2019" },
 ];
+
+export interface ExperienceItem {
+    company: string;
+    role: string;
+    location: string;
+    period: string;
+    highlights: string[];
+}
+
+export const experience: ExperienceItem[] = [
+    {
+        company: "Softius Technologies",
+        role: "Full Stack Developer",
+        location: "Kochi, Kerala · On-site",
+        period: "Jun 2024 — Aug 2026",
+        highlights: [
+            "Developed modern web applications with Nuxt JS, building responsive, reusable UI components.",
+            "Integrated frontend interfaces with APIs and implemented interactive user experiences.",
+            "Collaborated with developers to deliver maintainable, production-ready features from project requirements.",
+        ],
+    },
+    {
+        company: "Vonnue Innovations Pvt Ltd",
+        role: "Software Developer",
+        location: "Sulthan Bathery, Wayanad, Kerala",
+        period: "Jan 2022 — Mar 2024",
+        highlights: [
+            "Built web and mobile applications with React JS and React Native, alongside HTML, JavaScript, and CSS.",
+            "Developed efficient, tested software solutions across multiple projects.",
+            "Worked with the team to identify and resolve bugs, and contributed to algorithm and flowchart design.",
+        ],
+    },
+    {
+        company: "Sisel Enterprises",
+        role: "Junior Laravel Developer",
+        location: "Coimbatore",
+        period: "Mar 2021 — Jun 2021",
+        highlights: [],
+    },
+    {
+        company: "Learnovate Ecommerce",
+        role: "Web Developer",
+        location: "Pune",
+        period: "Jan 2021 — Feb 2021",
+        highlights: [],
+    },
+];
+
+export const education = {
+    school: "Rathinam Technical Campus, Coimbatore",
+    degree: "B.E. Computer Science",
+    period: "2016 — 2020",
+};

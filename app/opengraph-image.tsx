@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Arun Lal — Software Engineer";
+export const alt = "Arun Lal — Full Stack Developer";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -29,7 +29,7 @@ export default function Image() {
                     Arun Lal
                 </div>
                 <div style={{ display: "flex", fontSize: 40, color: "#efedea", marginTop: 24 }}>
-                    Software Engineer
+                    Full Stack Developer
                 </div>
                 <div style={{ display: "flex", fontSize: 28, color: "#8f8f8f", marginTop: 16, maxWidth: 900 }}>
                     Building thoughtful, reliable digital products

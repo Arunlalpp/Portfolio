@@ -16,9 +16,9 @@ const poppins = Poppins({
 });
 
 const siteUrl = "https://portfolio-ud9p.vercel.app";
-const siteTitle = "Arun Lal — Software Engineer";
+const siteTitle = "Arun Lal — Full Stack Developer";
 const siteDescription =
-    "Portfolio of Arun Lal, a software engineer building thoughtful, reliable digital products.";
+    "Portfolio of Arun Lal, a full stack developer with 4+ years of experience building web and mobile apps with React, Next.js, Vue, Nuxt, React Native, and Laravel.";
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),

@@ -41,6 +41,8 @@ export const footerSocialLinks: SocialLink[] = [
 
 export type ProjectMedia =
     | { type: "image"; src: string }
+    // Tall full-page capture that pans top-to-bottom inside the hover preview.
+    | { type: "scroll"; src: string; width: number; height: number }
     | { type: "video"; poster: string; mp4: string; webm: string };
 
 export interface Project {
@@ -53,81 +55,95 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        title: "Happenstance Store",
+        categories: ["Frontend", "Live"],
+        info: "E-commerce Store / Footwear Brand",
+        url: "https://happenstance.com/",
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/happenstance-store-full.jpg", width: 860, height: 5064 },
+    },
+    {
+        title: "Ikon Formulations",
+        categories: ["Frontend", "Live"],
+        info: "Marketing Website / Product Catalog",
+        url: "https://ikonformulations.in/",
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/ikon-formulations-scroll.jpg", width: 600, height: 6280 },
+    },
+    {
+        title: "Classic Group",
+        categories: ["Frontend", "Live"],
+        info: "Marketing Website / Corporate Site",
+        url: "https://classicgroup.co.in/",
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/classic-group-scroll.jpg", width: 600, height: 6280 },
+    },
+    {
         title: "Maillard",
         categories: ["Frontend"],
         info: "Marketing Website / Scroll-Driven Video Landing Page",
         url: "https://maillard-web.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/maillard-web.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/maillard-web-scroll.jpg", width: 600, height: 6280 },
     },
     {
         title: "Carewell Dental Experts",
         categories: ["Frontend"],
         info: "Marketing Website / Clinic Booking Site",
         url: "https://dental-clinic-website-v7t7.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/carewell-dental-experts.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/carewell-dental-experts-scroll.jpg", width: 600, height: 6280 },
     },
     {
         title: "OGGI Fashion",
         categories: ["Frontend"],
         info: "Marketing Website / Menswear Brand",
         url: "https://oggi-fashion.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/oggi-fashion.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/oggi-fashion-scroll.jpg", width: 600, height: 6280 },
     },
     {
         title: "Happenstance Sandal",
         categories: ["Frontend"],
         info: "Product Landing Page / 3D Exploded View",
         url: "https://happenstance-sandal.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/happenstance-sandal.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/happenstance-sandal-scroll.jpg", width: 600, height: 6280 },
     },
     {
         title: "Happenstance Sandal — Studio",
         categories: ["Frontend"],
         info: "Product Landing Page / Studio Photography",
         url: "https://happenstance-sandal-html.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/happenstance-sandal-html.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/happenstance-sandal-html-scroll.jpg", width: 600, height: 6280 },
     },
     {
         title: "Emirates Car Care",
         categories: ["Full Stack"],
         info: "Web App / Booking & Auth",
         url: "https://emirates-car-care.vercel.app/login",
-        media: { type: "image", src: "/assets/img/portfolio/1920/emirates-car-care.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/emirates-car-care-app.jpg", width: 720, height: 3600 },
     },
     {
         title: "OGGI Store Manager",
         categories: ["Full Stack"],
         info: "Web App / Store Management",
         url: "https://employee-managment-swart.vercel.app/login",
-        media: { type: "image", src: "/assets/img/portfolio/1920/oggi-store-manager.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/oggi-store-manager-app.jpg", width: 720, height: 5400 },
+    },
+    {
+        title: "Carewell Dental — Clinic PWA",
+        categories: ["Full Stack"],
+        info: "PWA / Clinic Management",
+        url: "https://github.com/Arunlalpp/dental-clinic-pwa",
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/carewell-dental-pwa.jpg", width: 720, height: 3600 },
     },
     {
         title: "Kalyani Kalakriti Foundation",
         categories: ["Frontend"],
         info: "Marketing Website",
         url: "https://kalyani-kalakriti.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/kalyani-kalakriti.jpg" },
-    },
-    {
-        title: "Ikon Formulations",
-        categories: ["Frontend"],
-        info: "Marketing Website / Product Catalog",
-        url: "https://ikon-website-delta.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/ikon-formulations.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/kalyani-kalakriti-scroll.jpg", width: 600, height: 3000 },
     },
     {
         title: "Leggett Property Management",
         categories: ["Frontend"],
         info: "Marketing Website / Lead Generation",
         url: "https://leggett-website.vercel.app/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/leggett-property.jpg" },
-    },
-    {
-        title: "Classic Group",
-        categories: ["Frontend"],
-        info: "Marketing Website / Corporate Site",
-        url: "https://classicgroup.co.in/",
-        media: { type: "image", src: "/assets/img/portfolio/1920/classic-group.jpg" },
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/leggett-property-scroll.jpg", width: 600, height: 6280 },
     },
 ];
 

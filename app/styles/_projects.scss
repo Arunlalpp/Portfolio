@@ -1,0 +1,30 @@
+/* ------------------------------------------------------------- *
+ * Project preview: scrolling full-page capture
+ * A tall screenshot that pans top-to-bottom while the row is hovered,
+ * like scrolling through the live site.
+/* ------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+	.tt-ppli-preview-image.tt-ppli-preview-scroll img {
+		height: auto;
+		object-fit: initial;
+		transform: translateY(0);
+		transition:
+			clip-path .5s cubic-bezier(0, 0, 0.2, 1),
+			transform .8s cubic-bezier(0.65, 0, 0.35, 1);
+	}
+
+	/* Pan until the bottom of the image meets the bottom of the 400px preview. */
+	.tt-ppl-item:hover .tt-ppli-preview-image.tt-ppli-preview-scroll img {
+		transform: translateY(calc(-100% + 400px));
+		transition:
+			clip-path .5s cubic-bezier(0, 0, 0.2, 1),
+			transform var(--tt-ppli-scroll-duration, 9s) cubic-bezier(0.45, 0, 0.55, 1) .5s;
+	}
+}
+
+@media (max-width: 767px) {
+	.tt-ppli-preview-image.tt-ppli-preview-scroll img {
+		object-position: top;
+	}
+}

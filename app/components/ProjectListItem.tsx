@@ -1,10 +1,20 @@
 "use client";
 
-import { useRef } from "react";
+import { CSSProperties, useRef } from "react";
 import Image from "next/image";
 import { useDeferredVideoSrc } from "../hooks/useDeferredVideoSrc";
 import { useHoverVideoPlayback } from "../hooks/useHoverVideoPlayback";
 import type { Project } from "../data/content";
+
+const PREVIEW_WIDTH = 300;
+const PREVIEW_HEIGHT = 400;
+const SCROLL_SPEED = 300; // px per second at preview size
+
+// Taller captures pan longer, so every preview scrolls at a similar pace.
+function getScrollDuration({ width, height }: { width: number; height: number }) {
+    const travel = (height * PREVIEW_WIDTH) / width - PREVIEW_HEIGHT;
+    return Math.min(Math.max(travel / SCROLL_SPEED, 5), 12).toFixed(1);
+}
 
 export default function ProjectListItem({ project }: { project: Project }) {
     const itemRef = useRef<HTMLAnchorElement>(null);
@@ -19,6 +29,19 @@ export default function ProjectListItem({ project }: { project: Project }) {
                 {project.media.type === "image" ? (
                     <div className="tt-ppli-preview-image">
                         <Image src={project.media.src} alt={project.title} fill sizes="(max-width: 767px) calc(100vw - 30px), 400px" />
+                    </div>
+                ) : project.media.type === "scroll" ? (
+                    <div
+                        className="tt-ppli-preview-image tt-ppli-preview-scroll"
+                        style={{ "--tt-ppli-scroll-duration": `${getScrollDuration(project.media)}s` } as CSSProperties}
+                    >
+                        <Image
+                            src={project.media.src}
+                            alt={project.title}
+                            width={project.media.width}
+                            height={project.media.height}
+                            sizes="(max-width: 767px) calc(100vw - 30px), 300px"
+                        />
                     </div>
                 ) : (
                     <div className="tt-ppli-preview-video">

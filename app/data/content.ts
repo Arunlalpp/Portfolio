@@ -76,6 +76,20 @@ export const projects: Project[] = [
         media: { type: "scroll", src: "/assets/img/portfolio/1920/classic-group-scroll.jpg", width: 600, height: 6280 },
     },
     {
+        title: "Radius Health Centre",
+        categories: ["Frontend"],
+        info: "Marketing Website / Multi-Speciality Clinic",
+        url: "https://radius-healthcare.vercel.app/",
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/radius-scroll.jpg", width: 600, height: 6280 },
+    },
+    {
+        title: "Backroad Ledger",
+        categories: ["Frontend"],
+        info: "Travel Boutique Website / Glassmorphism UI",
+        url: "https://github.com/Arunlalpp/boutique-travel/tree/plan-a-night-camp",
+        media: { type: "scroll", src: "/assets/img/portfolio/1920/boutique-scroll.jpg", width: 600, height: 6280 },
+    },
+    {
         title: "Maillard",
         categories: ["Frontend"],
         info: "Marketing Website / Scroll-Driven Video Landing Page",
